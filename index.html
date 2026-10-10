@@ -1869,7 +1869,7 @@
       } else {
         awardSpySide('spy', `spy:${currentSpyGameId}:spy-wins:${spyIds.join(',')}`);
         resultBox('lose', spyIds.length > 1 && caught.length ? 'Bir casus kaçtı! Casus tarafı kazandı.' : 'Casus kaçtı! Casus tarafı kazandı.',
-          `Casus${spyIds.length > 1 ? 'lar' : ''}: ${spyNames} • Suçlananlar: ${accusedTxt} • Karakter: ${auEsc(curCharacter)} • Casus tarafına +${characterBounty(curCharacter).toLocaleString('tr-TR')} Berry`);
+          `Casus${spyIds.length > 1 ? 'lar' : ''}: ${spyNames} • Suçlananlar: ${accusedTxt} • Karakter: ${auEsc(curCharacter)} • Kazanan casus oyuncularına +${SPY_WIN_REWARD.toLocaleString('tr-TR')} Berry`);
         endRound();
       }
     }
@@ -1902,14 +1902,14 @@
       if (normName(payload.guess) === normName(curCharacter)) {
         gameState = 'result';
         awardSpySide('spy', `spy:${currentSpyGameId}:spy-guessed:${spyIds.join(',')}`);
-        resultBox('lose', `${pname(payload.from)} karakteri bildi! Casus tarafı kazandı. 🕵️`, `Karakter: ${auEsc(curCharacter)} • Casus tarafına +${characterBounty(curCharacter).toLocaleString('tr-TR')} Berry`);
+        resultBox('lose', `${pname(payload.from)} karakteri bildi! Casus tarafı kazandı. 🕵️`, `Karakter: ${auEsc(curCharacter)} • Kazanan casus oyuncularına +${SPY_WIN_REWARD.toLocaleString('tr-TR')} Berry`);
         endRound();
       } else {
         wrongGuesses.add(payload.from);
         if (wrongGuesses.size >= spyIds.length) {
           gameState = 'result';
           awardSpySide('crew', `spy:${currentSpyGameId}:crew-wins:${spyIds.join(',')}`);
-          resultBox('win', 'Casus karakteri bilemedi! Halk kazandı. 🎉', `Casus: ${spyNames} • Gerçek karakter: ${auEsc(curCharacter)} • Mürettebat tarafına +${characterBounty(curCharacter).toLocaleString('tr-TR')} Berry`);
+          resultBox('win', 'Casus karakteri bilemedi! Halk kazandı. 🎉', `Casus: ${spyNames} • Gerçek karakter: ${auEsc(curCharacter)} • Kazanan mürettebat oyuncularına +${SPY_WIN_REWARD.toLocaleString('tr-TR')} Berry`);
           endRound();
         }
       }
@@ -1992,11 +1992,12 @@
     document.getElementById('playerName')?.addEventListener('change',()=>{ if(!document.getElementById('leaderboardPanel')?.hidden) loadBountyLeaderboard(); });
 
     function characterBounty(character){ return Math.max(0,Number(SECRET_BOUNTIES[character] ?? MARINE_BOUNTIES[character] ?? 0)||0); }
+    // Casusu Bul: sabit, yalnızca pozitif kariyer ödülü; karakterin poster bounty'si aktarılmaz.
+    const SPY_WIN_REWARD = 2000000;
     function awardSpySide(side, token){
       const won = side === 'spy' ? spyIds.includes(myId) : !spyIds.includes(myId);
       if(!won) return;
-      const amount=characterBounty(curCharacter);
-      if(amount>0) recordCareerBounty(amount,token,`Casusu Bul · ${curCharacter}`);
+      recordCareerBounty(SPY_WIN_REWARD,token,'Casusu Bul sabit kazanma ödülü');
     }
     function teamBounty(team){return (team||[]).reduce((sum,c)=>sum+characterBounty(c),0)}
 
@@ -2102,7 +2103,7 @@
     // Host keeps the assignment map locally; public state never contains unrevealed characters.
     let B = null, myBountyCharacter = '', myBountyGuessMessage = '';
     const bountyBerry = n => `${Number(n||0).toLocaleString('en-US')} Berry`;
-    const BOUNTY_WIN = 100000000, BOUNTY_WRONG = 10000000;
+    const BOUNTY_WIN = 5000000, BOUNTY_WRONG = 500000;
     const bountyEsc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;", "'": "&#39;"}[c]));
     const bountyShuffle = arr => auShuffle(arr);
     function bountyStart() {
@@ -2215,7 +2216,7 @@
       if(myBountyGuessMessage) h+=`<div class="result-box ${myBountyGuessMessage.startsWith('Doğru')?'win':'lose'}" style="margin:10px 0">${esc(myBountyGuessMessage)}</div>`;
       if(B.phase==='end') {
         const winners=(B.winner||[]).map(id=>esc(B.names[id])).join(', ');
-        recordCareerBounty(Math.max(0,Number(B.scores?.[me])||0),`bounty:${B.gameId||roomCode}:${me}`, 'Ödül Avcısı maç sonucu');
+        recordCareerBounty(Number(B.scores?.[me])||0,`bounty:${B.gameId||roomCode}:${me}`, 'Ödül Avcısı maç sonucu');
         h+=`<div class="result-box win" style="margin-top:14px">🏆 ${winners} kazandı!<div class="small" style="margin-top:8px">Tüm gizli karakterler bulundu.</div></div>`;
         if(isHost) h+='<button id="bountyAgain" style="margin-top:12px">Yeni Maç</button>';
       } else if(B.phase==='ask') {
@@ -2888,7 +2889,12 @@
         const totals=[teamBounty(AS.team[0]),teamBounty(AS.team[1])];
         const winner=totals[0]===totals[1]?-1:(totals[0]>totals[1]?0:1);
         const awardToken=`auction:${AS.gameId || roomCode}:${myId}`;
-        if(winner>=0 && AS.ids[me] && totals[winner]>0) { if(AS.ids[winner]===myId) recordCareerBounty(totals[winner],awardToken,`${AS.secret?'Secret Nakama':'Nakama Müzayedesi'} takım ödülü`); }
+        const myTeam=AS.ids.indexOf(myId);
+        const teamReward=Math.round((totals[myTeam]||0)*0.001); // %0,1: yaklaşık 1–3 milyon Berry
+        if(winner>=0 && myTeam>=0 && teamReward>0) {
+          const delta=myTeam===winner ? teamReward : -teamReward;
+          recordCareerBounty(delta,awardToken,`${AS.secret?'Secret Nakama':'Nakama Müzayedesi'} takım sonucunun %0,1'i`);
+        }
         h += `<div class="au-char">${AS.secret?'Secret Nakama':'Müzayede'} Bitti!</div><div class="bounty-board"><h2>🏴‍☠️ Takım Bountyleri</h2><div class="den-score-row"><span>${auEsc(AS.names[0])} takımı</span><b>${totals[0].toLocaleString('tr-TR')} Berry</b></div><div class="den-score-row"><span>${auEsc(AS.names[1])} takımı</span><b>${totals[1].toLocaleString('tr-TR')} Berry</b></div><p class="au-mid">${winner<0?'Berabere!':`${auEsc(AS.names[winner])} takımı kazandı!`}</p></div>`;
         if (isHost) h += '<button id="auAgain">Yeni Oyun</button>';
       } else {
