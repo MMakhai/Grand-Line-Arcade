@@ -828,50 +828,54 @@
     .cn-word.cn-proposed-blue{outline:5px solid #54b2ff!important;outline-offset:1px}
     @media(max-width:520px){.room-list .crew-join{width:112px!important;min-width:112px!important;height:50px!important;flex-basis:112px!important}.cn-word .cn-card-word.cn-hidden-word{font-size:clamp(.66rem,2.8vw,.9rem)!important;padding:5px!important}.cn-word.red,.cn-word.blue{border-width:4px!important}}
   
-    /* Olay günlüğü: oyun kutusunun sağ kenarına sabitlenir, boş alanı kullanır ve sola açılır. */
-    .cn-game-layout { position:relative !important; display:block !important; }
-    .cn-board { width:100% !important; max-width:1000px !important; }
+    /* Gizli Ajanlar: kart ızgarası tüm oyun panelini doldursun; günlük panelin sağından SAĞA açılsın. */
+    .cn-game-layout { position:relative !important; display:block !important; overflow:visible !important; }
+    .cn-board { width:100% !important; max-width:none !important; grid-template-columns:repeat(7,minmax(0,1fr)) !important; }
     .cn-log-drawer {
       position:absolute !important;
       z-index:1000 !important;
       top:22px !important;
-      right:0 !important;
-      left:auto !important;
+      left:100% !important;
+      right:auto !important;
       width:42px !important;
-      max-width:min(360px, 100%) !important;
-      height:auto;
+      max-width:min(360px, 36vw) !important;
       max-height:72vh !important;
       display:flex !important;
-      flex-direction:row-reverse !important;
+      flex-direction:row !important;
       align-items:stretch !important;
       transform:none !important;
       transition:width .28s ease !important;
-      overflow:hidden;
+      overflow:hidden !important;
       filter:drop-shadow(0 8px 22px rgba(0,0,0,.42));
     }
-    .cn-log-drawer.is-open { width:min(360px, 100%) !important; }
+    .cn-log-drawer.is-open { width:min(360px, 36vw) !important; }
     .cn-log-toggle {
+      order:0 !important;
       flex:0 0 42px !important;
       width:42px !important;
       min-width:42px !important;
       align-self:flex-start !important;
       min-height:112px !important;
       margin:0 !important;
-      border-radius:12px 0 0 12px !important;
-      border-right:1px solid rgba(255,255,255,.28) !important;
-      border-left:0 !important;
+      border-radius:0 12px 12px 0 !important;
+      border-left:1px solid rgba(255,255,255,.28) !important;
+      border-right:0 !important;
     }
     .cn-log-drawer-content {
+      order:1 !important;
       flex:0 0 calc(100% - 42px) !important;
       width:calc(100% - 42px) !important;
       min-width:0 !important;
       max-height:72vh !important;
-      border-radius:0 0 0 14px !important;
+      border-radius:0 0 14px 0 !important;
     }
     .cn-log-drawer .cn-log { overflow:auto; max-height:calc(72vh - 52px); }
     @media(max-width:900px) {
-      .cn-log-drawer { top:8px !important; max-width:min(360px, 100%) !important; }
-      .cn-log-drawer.is-open { width:min(360px, 100%) !important; }
+      .cn-board { max-width:none !important; gap:4px !important; }
+      .cn-log-drawer { position:fixed !important; top:16vh !important; left:auto !important; right:0 !important; max-width:min(330px,94vw) !important; }
+      .cn-log-drawer.is-open { width:min(330px,94vw) !important; }
+      .cn-log-toggle { border-radius:12px 0 0 12px !important; border-right:1px solid rgba(255,255,255,.28) !important; border-left:0 !important; }
+      .cn-log-drawer-content { border-radius:0 0 0 14px !important; }
     }
 
   </style>
