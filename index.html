@@ -1231,7 +1231,35 @@
   .cn-status-title { font-size: 1rem; }
   .cn-agent-heading { width: 100%; }
   .cn-clue-row { grid-template-columns: minmax(0,1fr) 76px !important; }
-}\n\n</style>
+}\n\n
+    /* Emoji seçimleri: genel button stillerinden etkilenmeden ayrı hücrelerde dizilsin. */
+    .den-emoji-library {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)) !important;
+      align-items: stretch;
+      width: 100%;
+      min-width: 0;
+      gap: 7px;
+    }
+    .den-emoji-library > .den-emoji-pick {
+      display: flex !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: 100%;
+      flex: initial !important;
+      align-items: center;
+      justify-content: center;
+      margin: 0 !important;
+      white-space: normal;
+    }
+    @media (max-width: 620px) {
+      .den-emoji-library {
+        grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+        gap: 5px;
+      }
+    }
+
+  </style>
 </head>
 <body class="lobby-mode">
   <!-- Background Music -->
