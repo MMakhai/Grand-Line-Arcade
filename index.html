@@ -816,7 +816,65 @@
     }
     @media(prefers-reduced-motion:reduce) { .cn-log-drawer { transition:none; } }
 
-</style>
+    /* Son arayüz düzeltmeleri: oda katıl butonu, okunaklı kelime kartları ve renkli ajan kartları */
+    .room-list .crew-join{width:136px!important;min-width:136px!important;height:58px!important;padding:0!important;flex:0 0 136px!important;border-radius:10px!important}
+    .room-list .crew-join img{width:100%;height:100%;object-fit:contain;transform:scale(1.08)}
+    .cn-word .cn-full-card{filter:none!important}
+    .cn-key-cell img{filter:none!important}
+    .cn-word .cn-card-word.cn-hidden-word{font-size:clamp(.78rem,1.45vw,1.12rem)!important;line-height:1.16!important;font-weight:900!important;padding:8px!important;color:#fff4d4!important;text-shadow:0 2px 3px rgba(0,0,0,.8)!important;overflow-wrap:anywhere;word-break:normal}
+    .cn-word.red{border:5px solid #f04455!important}
+    .cn-word.blue{border:5px solid #39a0ff!important}
+    .cn-word.cn-proposed-red{outline:5px solid #ff5365!important;outline-offset:1px}
+    .cn-word.cn-proposed-blue{outline:5px solid #54b2ff!important;outline-offset:1px}
+    @media(max-width:520px){.room-list .crew-join{width:112px!important;min-width:112px!important;height:50px!important;flex-basis:112px!important}.cn-word .cn-card-word.cn-hidden-word{font-size:clamp(.66rem,2.8vw,.9rem)!important;padding:5px!important}.cn-word.red,.cn-word.blue{border-width:4px!important}}
+  
+    /* Olay günlüğü: oyun kutusunun sağ kenarına sabitlenir, boş alanı kullanır ve sola açılır. */
+    .cn-game-layout { position:relative !important; display:block !important; }
+    .cn-board { width:100% !important; max-width:1000px !important; }
+    .cn-log-drawer {
+      position:absolute !important;
+      z-index:1000 !important;
+      top:22px !important;
+      right:0 !important;
+      left:auto !important;
+      width:42px !important;
+      max-width:min(360px, 100%) !important;
+      height:auto;
+      max-height:72vh !important;
+      display:flex !important;
+      flex-direction:row-reverse !important;
+      align-items:stretch !important;
+      transform:none !important;
+      transition:width .28s ease !important;
+      overflow:hidden;
+      filter:drop-shadow(0 8px 22px rgba(0,0,0,.42));
+    }
+    .cn-log-drawer.is-open { width:min(360px, 100%) !important; }
+    .cn-log-toggle {
+      flex:0 0 42px !important;
+      width:42px !important;
+      min-width:42px !important;
+      align-self:flex-start !important;
+      min-height:112px !important;
+      margin:0 !important;
+      border-radius:12px 0 0 12px !important;
+      border-right:1px solid rgba(255,255,255,.28) !important;
+      border-left:0 !important;
+    }
+    .cn-log-drawer-content {
+      flex:0 0 calc(100% - 42px) !important;
+      width:calc(100% - 42px) !important;
+      min-width:0 !important;
+      max-height:72vh !important;
+      border-radius:0 0 0 14px !important;
+    }
+    .cn-log-drawer .cn-log { overflow:auto; max-height:calc(72vh - 52px); }
+    @media(max-width:900px) {
+      .cn-log-drawer { top:8px !important; max-width:min(360px, 100%) !important; }
+      .cn-log-drawer.is-open { width:min(360px, 100%) !important; }
+    }
+
+  </style>
 </head>
 <body class="lobby-mode">
   <!-- Background Music -->
@@ -2391,7 +2449,7 @@
       if(CN.phase==='clue'&&captain&&team===CN.turn){h+='<div class="cn-clue-row"><input id="cnClueWord" maxlength="28" placeholder="Tek kelimelik ipucu"><input id="cnClueCount" type="number" min="0" max="9" value="2" style="max-width:85px;flex:0 0 85px"><button id="cnClueSubmit">İpucu ver</button></div><div class="cn-small">İpucu, tahtadaki kelimelerden biriyle aynı olamaz. Kaptan bu tur tahmin yapmaz.</div>';}
       else if(CN.phase==='guess'&&team===CN.turn&&!captain){h+='<div class="cn-small">Takımınla konuş, ardından bir kelime kartı seç. En fazla '+CN.guessesLeft+' tahmin hakkın var.</div><button id="cnEndTurn" class="secondary" style="width:auto;margin:8px 0;padding:9px 12px">Turu bitir</button>';}
       else if(CN.phase==='guess'&&team===CN.turn&&captain){h+='<div class="cn-small">Takımın tahmin ediyor. Kaptan olarak kelime kartı seçemezsin.</div>';}
-      h+='<div class="cn-game-layout"><div class="cn-board">'+CN.words.map(w=>{const revealedRole=CN.revealed[w];const role=revealedRole||(captain&&cnPrivateKey?cnPrivateKey[w]:'');const proposals=CN.proposals?.[w]||[];const mineProposed=proposals.some(x=>x.id===myId);const proposalClass=proposals.length?(proposals[0].team==='red'?'cn-proposed-red':'cn-proposed-blue'):'';const canPropose=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&active;const canConfirm=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&proposals.length>0&&active;const image=CN.cardImages?.[w];const showFullCard=!!revealedRole||(captain&&!!cnPrivateKey);const face=showFullCard?`<img class="cn-full-card" src="${image||''}" alt=""><span class="cn-card-word">${auEsc(w)}</span>`:`<span class="cn-card-word cn-hidden-word" style="display:flex;position:static;height:auto;padding:10px">${auEsc(w)}</span>`;const avatars=proposals.length?`<span class="cn-proposer-stack">${proposals.map(x=>`<img class="cn-proposer-avatar" src="${avatarSrc(x.avatar)}" title="${auEsc(x.name)} önerdi" alt="">`).join('')}</span>`:'';const confirm=canConfirm?`<span class="cn-confirm-reveal" role="button" tabindex="0" data-cn-confirm="${auEsc(w)}" title="Önerilen kartı aç" aria-label="${auEsc(w)} kartını aç">✓</span>`:(captain&&revealedRole?'<span class="cn-revealed-check" title="Kart açıldı">✓</span>':'');return `<button class="cn-word ${role||''} ${captain&&cnPrivateKey&&!revealedRole?'cn-secret-card':''} ${proposalClass}" data-cn-word="${auEsc(w)}" ${(!(canPropose||canConfirm))?'disabled':''}>${face}${avatars}${confirm}</button>`;}).join('')+'</div><aside class="cn-log-drawer '+(cnLogOpen?'is-open':'')+'" id="cnLogPanel"><button type="button" class="cn-log-toggle" id="cnLogToggle" aria-expanded="'+(cnLogOpen?'true':'false')+'" aria-label="Olay günlüğünü '+(cnLogOpen?'kapat':'aç')+'"><span class="cn-log-arrow">'+(cnLogOpen?'›':'‹')+'</span><span class="cn-log-tab-label">OLAY GÜNLÜĞÜ</span></button><div class="cn-log-drawer-content"><div class="cn-log-title">📜 Olay günlüğü</div><div class="cn-log">'+(CN.history||[]).map(x=>`<div>${auEsc(x)}</div>`).join('')+'</div></div></aside></div>';
+      h+='<div class="cn-game-layout"><div class="cn-board">'+CN.words.map(w=>{const revealedRole=CN.revealed[w];const role=revealedRole||(captain&&cnPrivateKey?cnPrivateKey[w]:'');const proposals=CN.proposals?.[w]||[];const mineProposed=proposals.some(x=>x.id===myId);const proposalClass=proposals.length?(proposals[0].team==='red'?'cn-proposed-red':'cn-proposed-blue'):'';const canPropose=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&active;const canConfirm=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&proposals.length>0&&active;const image=CN.cardImages?.[w];const showFullCard=!!revealedRole||(captain&&!!cnPrivateKey);const face=showFullCard?`<img class="cn-full-card" src="${image||''}" alt=""><span class="cn-card-word">${auEsc(w)}</span>`:`<span class="cn-card-word cn-hidden-word" style="display:flex;position:static;height:auto;padding:10px">${auEsc(w)}</span>`;const avatars=proposals.length?`<span class="cn-proposer-stack">${proposals.map(x=>`<img class="cn-proposer-avatar" src="${avatarSrc(x.avatar)}" title="${auEsc(x.name)} önerdi" alt="">`).join('')}</span>`:'';const confirm=canConfirm?`<span class="cn-confirm-reveal" role="button" tabindex="0" data-cn-confirm="${auEsc(w)}" title="Önerilen kartı aç" aria-label="${auEsc(w)} kartını aç">✓</span>`:(captain&&revealedRole?'<span class="cn-revealed-check" title="Kart açıldı">✓</span>':'');return `<button class="cn-word ${role||''} ${captain&&cnPrivateKey&&!revealedRole?'cn-secret-card':''} ${proposalClass}" data-cn-word="${auEsc(w)}" ${(!(canPropose||canConfirm))?'disabled':''}>${face}${avatars}${confirm}</button>`;}).join('')+'</div><aside class="cn-log-drawer '+(cnLogOpen?'is-open':'')+'" id="cnLogPanel"><button type="button" class="cn-log-toggle" id="cnLogToggle" aria-expanded="'+(cnLogOpen?'true':'false')+'" aria-label="Olay günlüğünü '+(cnLogOpen?'kapat':'aç')+'"><span class="cn-log-arrow">'+(cnLogOpen?'‹':'›')+'</span><span class="cn-log-tab-label">OLAY GÜNLÜĞÜ</span></button><div class="cn-log-drawer-content"><div class="cn-log-title">📜 Olay günlüğü</div><div class="cn-log">'+(CN.history||[]).map(x=>`<div>${auEsc(x)}</div>`).join('')+'</div></div></aside></div>';
       if(CN.phase==='finished')h+=`<h3 style="text-align:center;color:var(--straw);margin:10px">🏆 ${teamName(CN.winner)} takım kazandı!</h3><p class="cn-small" style="text-align:center">Yeni maç için lobiye dönüp yeni oda oluşturun.</p>`;
       view.innerHTML=h;
       document.getElementById('cnLeave').onclick=()=>document.getElementById('btnLeave').click();
