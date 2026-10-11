@@ -2064,9 +2064,17 @@
       const d = ONE_PIECE_MASTER_DATA[character];
       if (!d) return [{ key:'origin-haki', label:'Köken + Haki', value:'Bilinmiyor' }];
       const categories = [];
-      const bounty = Number(d.bounty || 0);
-      const bountyRange = bounty < 500000000 ? '0–500M Berry' : bounty < 1000000000 ? '500M–1B Berry' : '1B+ Berry';
-      if (d.bounty != null) categories.push({key:'bounty',label:'Ödül aralığı',value:bountyRange});
+      // Ödül yalnızca gerçek bir sayısal değerse aralık ipucu üret.
+      // '?', 'Yok' veya başka metin değerleri NaN üzerinden yanlışlıkla 1B+ olmamalı.
+      const bounty = (typeof d.bounty === 'number' && Number.isFinite(d.bounty))
+        ? d.bounty
+        : (typeof d.bounty === 'string' && d.bounty.trim() !== '' && Number.isFinite(Number(d.bounty))
+          ? Number(d.bounty)
+          : null);
+      if (bounty !== null) {
+        const bountyRange = bounty < 500000000 ? '0–500M Berry' : bounty < 1000000000 ? '500M–1B Berry' : '1B+ Berry';
+        categories.push({key:'bounty',label:'Ödül aralığı',value:bountyRange});
+      }
       if (d.fruitType && !['?','Bilinmiyor','-'].includes(d.fruitType)) categories.push({key:'fruit',label:'Şeytan Meyvesi türü',value:d.fruitType});
       // Köken ve Haki her zaman tek bir ipucu olarak birlikte sunulur.
       if (d.origin || d.hakiTypes) categories.push({key:'origin-haki',label:'Köken + Haki',value:`${d.origin || 'Bilinmiyor'} · Haki: ${d.hakiTypes || 'Bilinmiyor'}`});
