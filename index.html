@@ -724,6 +724,98 @@
       .cn-word{border-width:2px;border-radius:6px}
       .cn-word .cn-card-word{font-size:clamp(.32rem,1.3vw,.58rem)}
     }
+
+    /* Gizli Ajanlar: tüm 28 kart ve ipucu aynı ekrana sığsın */
+    body:has(#codenames:not(.hidden)) .container,
+    body:has(#codenames:not(.hidden)) .app,
+    body:has(#codenames:not(.hidden)) main { max-width: min(1360px, 98vw) !important; width:100%; }
+    #codenames, #codenamesView { width:100%; max-width:none; }
+    #codenamesView > * { margin-top: 5px; margin-bottom: 5px; }
+    .cn-top { gap:10px; }
+    .cn-team-orb { width:72px; height:72px; flex-basis:72px; border-width:3px; font-size:.68rem; }
+    .cn-team-orb .cn-orb-label { font-size:.52rem; }
+    .cn-clue-banner { margin:5px 0 7px; padding:8px 11px; gap:9px; }
+    .cn-clue-value { font-size:clamp(1.05rem, 2vw, 1.45rem); }
+    .cn-clue-count { min-width:34px; height:34px; font-size:1.05rem; }
+    .cn-turn-status { font-size:.9rem; line-height:1.2; }
+    .cn-game-layout { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:10px; align-items:start; }
+    .cn-board { grid-column:1; width:100%; max-width:1000px; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px; margin:7px 0 0; }
+    .cn-word { height:clamp(96px, calc((100vh - 290px) / 4), 172px); aspect-ratio:auto; border-width:2px; border-radius:7px; }
+    .cn-word .cn-full-card { object-fit:fill; }
+    .cn-word .cn-card-word { font-size:clamp(.38rem,.65vw,.62rem); left:5%; right:5%; bottom:4%; height:17%; padding:0 2px; }
+    .cn-proposer-avatar { width:17px; height:17px; }
+    .cn-confirm-reveal { width:27px; height:27px; min-width:27px; font-size:18px; right:3px; top:3px; }
+    .cn-revealed-check { width:25px; height:25px; font-size:18px; right:3px; top:3px; }
+    .cn-log-panel { grid-column:2; grid-row:1; position:sticky; top:8px; max-height:calc(100vh - 180px); overflow:auto; }
+    .cn-log-panel summary { padding:8px 10px; }
+    .cn-log { max-height:calc(100vh - 240px); padding:0 9px 9px; font-size:.76rem; }
+    .cn-log div { padding:5px 0; }
+    .cn-clue-row { gap:7px; margin:6px 0; }
+    .cn-clue-row input, .cn-clue-row button { padding-top:8px; padding-bottom:8px; }
+    @media(max-height:800px) and (min-width:901px) {
+      body:has(#codenames:not(.hidden)) .container { max-width:min(1160px,98vw) !important; }
+      .cn-game-layout { grid-template-columns:minmax(0,1fr) 190px; gap:8px; }
+      .cn-board { max-width:850px; gap:4px; }
+      .cn-word { height:clamp(88px, calc((100vh - 255px) / 4), 135px); }
+      .cn-team-orb { width:60px; height:60px; flex-basis:60px; }
+      .cn-clue-banner { padding:6px 9px; margin:3px 0 5px; }
+    }
+    @media(max-height:680px) and (min-width:901px) {
+      body:has(#codenames:not(.hidden)) .container { max-width:min(1000px,98vw) !important; }
+      .cn-game-layout { grid-template-columns:minmax(0,1fr) 165px; }
+      .cn-board { max-width:730px; }
+      .cn-word { height:clamp(76px, calc((100vh - 220px) / 4), 105px); }
+      .cn-log { font-size:.68rem; }
+    }
+    @media(max-width:900px) {
+      .cn-game-layout { grid-template-columns:minmax(0,1fr); }
+      .cn-board { max-width:100%; gap:4px; }
+      .cn-word { height:clamp(82px, 18vw, 145px); }
+      .cn-log-panel { grid-column:1; grid-row:auto; position:static; max-height:180px; }
+      .cn-log { max-height:130px; }
+      .cn-team-orb { width:58px; height:58px; flex-basis:58px; }
+      .cn-clue-banner { padding:7px 9px; }
+    }
+
+
+
+    /* Son düzenleme: kaptan için merkezî açıldı işareti ve sağdan kayan olay günlüğü */
+    .cn-game-layout { display:block !important; position:relative; padding-right:0 !important; }
+    .cn-board { width:100%; max-width:1000px; }
+    .cn-revealed-check {
+      position:absolute; left:50%; top:50%; right:auto; transform:translate(-50%,-50%);
+      width:clamp(42px,5.2vw,68px); height:clamp(42px,5.2vw,68px); border-radius:50%;
+      background:rgba(22,163,74,.94); border:4px solid #fff; color:#fff;
+      font-size:clamp(32px,4.4vw,52px); line-height:1; font-weight:1000;
+      display:flex; align-items:center; justify-content:center; z-index:8;
+      box-shadow:0 0 0 5px rgba(0,0,0,.45),0 5px 18px rgba(0,0,0,.65);
+      pointer-events:none;
+    }
+    .cn-log-drawer {
+      position:fixed; z-index:1000; top:18vh; right:0; width:min(360px,92vw); max-height:72vh;
+      display:flex; align-items:stretch; transform:translateX(calc(100% - 42px));
+      transition:transform .28s ease; filter:drop-shadow(0 8px 22px rgba(0,0,0,.42));
+    }
+    .cn-log-drawer.is-open { transform:translateX(0); }
+    .cn-log-toggle {
+      flex:0 0 42px; width:42px; min-width:42px; align-self:flex-start; min-height:112px;
+      padding:10px 5px; margin:0; border:1px solid rgba(255,255,255,.28); border-right:0;
+      border-radius:12px 0 0 12px; background:linear-gradient(180deg,#243b55,#111d2d);
+      color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+      cursor:pointer; box-shadow:none;
+    }
+    .cn-log-arrow { font-size:30px; font-weight:900; line-height:1; }
+    .cn-log-tab-label { writing-mode:vertical-rl; transform:rotate(180deg); font-size:10px; letter-spacing:.12em; font-weight:900; white-space:nowrap; }
+    .cn-log-drawer-content { min-width:0; width:calc(100% - 42px); background:rgba(8,16,28,.96); border:1px solid rgba(255,255,255,.22); border-radius:0 0 0 14px; overflow:hidden; display:flex; flex-direction:column; }
+    .cn-log-title { padding:13px 14px; font-weight:900; border-bottom:1px solid rgba(255,255,255,.13); background:rgba(255,255,255,.06); }
+    .cn-log-drawer .cn-log { max-height:calc(72vh - 48px); overflow:auto; padding:4px 13px 13px; font-size:.82rem; }
+    @media(max-width:900px) {
+      .cn-log-drawer { top:16vh; max-height:68vh; width:min(330px,94vw); }
+      .cn-log-drawer .cn-log { max-height:calc(68vh - 48px); }
+      .cn-revealed-check { width:clamp(32px,8vw,48px); height:clamp(32px,8vw,48px); font-size:clamp(25px,6vw,38px); border-width:3px; }
+    }
+    @media(prefers-reduced-motion:reduce) { .cn-log-drawer { transition:none; } }
+
 </style>
 </head>
 <body class="lobby-mode">
@@ -1185,7 +1277,7 @@
     let myId = crypto.randomUUID(), myName = '', roomCode = '', isHost = false;
     let players = {}, gameState = 'lobby', spyId = null;
     let mode = 'spy', AS = null;
-    let cnTeam = '', cnCaptain = false, CN = null, cnPrivateKey = null, pendingCNState = null;
+    let cnTeam = '', cnCaptain = false, CN = null, cnPrivateKey = null, pendingCNState = null, cnLogOpen = false;
     let denDuration = 30, denDrawMultiplier = 1.5, denRoundsPerPlayer = 3, denStyle = 'voice', D = null, myDenCharacter = '', myDenTaboo = [], denTimerHandle = null, denRevealTimeout = null, denLocalCooldownUntil = 0, denFeedback = ''; 
     let curCharacter = '', spyIds = [], announced = 1, wrongGuesses = new Set(), voteSel = [], currentSpyGameId = '';
     const modeName = m => m === 'codenames' ? 'Gizli Ajanlar' : m === 'den' ? 'Den Den Mushi: Gizli Mesaj' : m === 'bounty' ? 'Ödül Avcısı' : m === 'secret' ? 'Secret Nakama Müzayedesi' : m === 'auction' ? 'Nakama Müzayedesi' : 'Casusu Bul';
@@ -2299,7 +2391,7 @@
       if(CN.phase==='clue'&&captain&&team===CN.turn){h+='<div class="cn-clue-row"><input id="cnClueWord" maxlength="28" placeholder="Tek kelimelik ipucu"><input id="cnClueCount" type="number" min="0" max="9" value="2" style="max-width:85px;flex:0 0 85px"><button id="cnClueSubmit">İpucu ver</button></div><div class="cn-small">İpucu, tahtadaki kelimelerden biriyle aynı olamaz. Kaptan bu tur tahmin yapmaz.</div>';}
       else if(CN.phase==='guess'&&team===CN.turn&&!captain){h+='<div class="cn-small">Takımınla konuş, ardından bir kelime kartı seç. En fazla '+CN.guessesLeft+' tahmin hakkın var.</div><button id="cnEndTurn" class="secondary" style="width:auto;margin:8px 0;padding:9px 12px">Turu bitir</button>';}
       else if(CN.phase==='guess'&&team===CN.turn&&captain){h+='<div class="cn-small">Takımın tahmin ediyor. Kaptan olarak kelime kartı seçemezsin.</div>';}
-      h+='<div class="cn-game-layout"><div class="cn-board">'+CN.words.map(w=>{const revealedRole=CN.revealed[w];const role=revealedRole||(captain&&cnPrivateKey?cnPrivateKey[w]:'');const proposals=CN.proposals?.[w]||[];const mineProposed=proposals.some(x=>x.id===myId);const proposalClass=proposals.length?(proposals[0].team==='red'?'cn-proposed-red':'cn-proposed-blue'):'';const canPropose=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&active;const canConfirm=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&proposals.length>0&&active;const image=CN.cardImages?.[w];const showFullCard=!!revealedRole||(captain&&!!cnPrivateKey);const face=showFullCard?`<img class="cn-full-card" src="${image||''}" alt=""><span class="cn-card-word">${auEsc(w)}</span>`:`<span class="cn-card-word cn-hidden-word" style="display:flex;position:static;height:auto;padding:10px">${auEsc(w)}</span>`;const avatars=proposals.length?`<span class="cn-proposer-stack">${proposals.map(x=>`<img class="cn-proposer-avatar" src="${avatarSrc(x.avatar)}" title="${auEsc(x.name)} önerdi" alt="">`).join('')}</span>`:'';const confirm=canConfirm?`<span class="cn-confirm-reveal" role="button" tabindex="0" data-cn-confirm="${auEsc(w)}" title="Önerilen kartı aç" aria-label="${auEsc(w)} kartını aç">✓</span>`:(captain&&revealedRole?'<span class="cn-revealed-check" title="Kart açıldı">✓</span>':'');return `<button class="cn-word ${role||''} ${captain&&cnPrivateKey&&!revealedRole?'cn-secret-card':''} ${proposalClass}" data-cn-word="${auEsc(w)}" ${(!(canPropose||canConfirm))?'disabled':''}>${face}${avatars}${confirm}</button>`;}).join('')+'</div><details class="cn-log-panel" id="cnLogPanel"><summary>📜 Olay günlüğü <span>▾</span></summary><div class="cn-log">'+(CN.history||[]).map(x=>`<div>${auEsc(x)}</div>`).join('')+'</div></details></div>';
+      h+='<div class="cn-game-layout"><div class="cn-board">'+CN.words.map(w=>{const revealedRole=CN.revealed[w];const role=revealedRole||(captain&&cnPrivateKey?cnPrivateKey[w]:'');const proposals=CN.proposals?.[w]||[];const mineProposed=proposals.some(x=>x.id===myId);const proposalClass=proposals.length?(proposals[0].team==='red'?'cn-proposed-red':'cn-proposed-blue'):'';const canPropose=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&active;const canConfirm=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&proposals.length>0&&active;const image=CN.cardImages?.[w];const showFullCard=!!revealedRole||(captain&&!!cnPrivateKey);const face=showFullCard?`<img class="cn-full-card" src="${image||''}" alt=""><span class="cn-card-word">${auEsc(w)}</span>`:`<span class="cn-card-word cn-hidden-word" style="display:flex;position:static;height:auto;padding:10px">${auEsc(w)}</span>`;const avatars=proposals.length?`<span class="cn-proposer-stack">${proposals.map(x=>`<img class="cn-proposer-avatar" src="${avatarSrc(x.avatar)}" title="${auEsc(x.name)} önerdi" alt="">`).join('')}</span>`:'';const confirm=canConfirm?`<span class="cn-confirm-reveal" role="button" tabindex="0" data-cn-confirm="${auEsc(w)}" title="Önerilen kartı aç" aria-label="${auEsc(w)} kartını aç">✓</span>`:(captain&&revealedRole?'<span class="cn-revealed-check" title="Kart açıldı">✓</span>':'');return `<button class="cn-word ${role||''} ${captain&&cnPrivateKey&&!revealedRole?'cn-secret-card':''} ${proposalClass}" data-cn-word="${auEsc(w)}" ${(!(canPropose||canConfirm))?'disabled':''}>${face}${avatars}${confirm}</button>`;}).join('')+'</div><aside class="cn-log-drawer '+(cnLogOpen?'is-open':'')+'" id="cnLogPanel"><button type="button" class="cn-log-toggle" id="cnLogToggle" aria-expanded="'+(cnLogOpen?'true':'false')+'" aria-label="Olay günlüğünü '+(cnLogOpen?'kapat':'aç')+'"><span class="cn-log-arrow">'+(cnLogOpen?'›':'‹')+'</span><span class="cn-log-tab-label">OLAY GÜNLÜĞÜ</span></button><div class="cn-log-drawer-content"><div class="cn-log-title">📜 Olay günlüğü</div><div class="cn-log">'+(CN.history||[]).map(x=>`<div>${auEsc(x)}</div>`).join('')+'</div></div></aside></div>';
       if(CN.phase==='finished')h+=`<h3 style="text-align:center;color:var(--straw);margin:10px">🏆 ${teamName(CN.winner)} takım kazandı!</h3><p class="cn-small" style="text-align:center">Yeni maç için lobiye dönüp yeni oda oluşturun.</p>`;
       view.innerHTML=h;
       document.getElementById('cnLeave').onclick=()=>document.getElementById('btnLeave').click();
@@ -2308,7 +2400,7 @@
       document.getElementById('cnClueSubmit')?.addEventListener('click',()=>{const word=document.getElementById('cnClueWord').value.trim();const count=Number(document.getElementById('cnClueCount').value);if(!word||/\s/.test(word)){alert('İpucu tek kelime olmalı.');return;}cnAction({type:'clue',word,count});});
       view.querySelectorAll('[data-cn-word]').forEach(btn=>btn.addEventListener('click',ev=>{if(ev.target.closest('[data-cn-confirm]'))return;if(!btn.disabled)cnAction({type:'propose',word:btn.dataset.cnWord});}));
       view.querySelectorAll('[data-cn-confirm]').forEach(el=>{const confirm=()=>cnAction({type:'reveal',word:el.dataset.cnConfirm});el.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();confirm();});el.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();ev.stopPropagation();confirm();}});});
-      const logPanel=document.getElementById('cnLogPanel'); if(logPanel)logPanel.open=false;
+      const logToggle=document.getElementById('cnLogToggle'); if(logToggle)logToggle.onclick=()=>{cnLogOpen=!cnLogOpen;const panel=document.getElementById('cnLogPanel');panel?.classList.toggle('is-open',cnLogOpen);logToggle.setAttribute('aria-expanded',String(cnLogOpen));logToggle.setAttribute('aria-label','Olay günlüğünü '+(cnLogOpen?'kapat':'aç'));const arrow=logToggle.querySelector('.cn-log-arrow');if(arrow)arrow.textContent=cnLogOpen?'›':'‹';};
     }
 
     // ========== ÖDÜL AVCISI ==========
