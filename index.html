@@ -903,6 +903,22 @@
     }
     @media(prefers-reduced-motion:reduce) { .cn-log-drawer { transition:none !important; } }
 
+
+    /* Takım kimliği: orijinal renkli illüstrasyonun üstüne görünür kırmızı/mavi renk katmanı */
+    .cn-word.red::after {
+      background:#f01835 !important;
+      opacity:.42 !important;
+      mix-blend-mode:color !important;
+    }
+    .cn-word.blue::after {
+      background:#168bff !important;
+      opacity:.46 !important;
+      mix-blend-mode:color !important;
+    }
+    /* Kartın renkli çizimi korunur; yalnızca takıma ait ton belirginleştirilir. */
+    .cn-word.red .cn-full-card,
+    .cn-word.blue .cn-full-card { filter:none !important; }
+
   </style>
 </head>
 <body class="lobby-mode">
