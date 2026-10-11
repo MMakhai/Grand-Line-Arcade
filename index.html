@@ -998,7 +998,7 @@
           <button id="modeSec" class="mode-tile" aria-label="Secret Nakama oyun modunu seç" title="Secret Nakama"><img class="mode-poster" src="Assets/Secret Nakama.png" alt="Secret Nakama" /></button>
           <button id="modeBounty" class="mode-tile" aria-label="Ödül Avcısı oyun modunu seç" title="Ödül Avcısı"><img class="mode-poster" src="Assets/Ödül avcısı.png" alt="Ödül Avcısı" /></button>
           <button id="modeDen" class="mode-tile" aria-label="Den Den Mushi: Gizli Mesaj oyun modunu seç" title="Den Den Mushi: Gizli Mesaj"><img class="mode-poster" src="Assets/Den-Den.png" alt="Den Den Mushi: Gizli Mesaj" /></button>
-          <button id="modeCodenames" class="mode-tile mode-text-tile" aria-label="Gizli Ajanlar oyun modunu seç" title="Gizli Ajanlar"><span class="mode-symbol">🕵️‍♂️</span><span>GİZLİ AJANLAR</span><small>One Piece · Kelime Takımı</small></button>
+          <button id="modeCodenames" class="mode-tile" aria-label="Gizli Ajanlar oyun modunu seç" title="Gizli Ajanlar"><img class="mode-poster" src="Assets/Nakamacode.png" alt="NakamaCode" /></button>
         </div>
         <div id="denLobbySettings" class="den-settings">
           <div class="section-title" style="margin-top:0">Tur Ayarları</div>
@@ -2179,9 +2179,27 @@
 
     // ========== GİZLİ AJANLAR (One Piece temalı Codenames) ==========
     const CN_WORDS = ["LUFFY", "ZORO", "NAMI", "USOPP", "SANJI", "CHOPPER", "ROBIN", "FRANKY", "BROOK", "JINBE", "SHANKS", "BUGGY", "ACE", "SABO", "LAW", "KID", "BLACKBEARD", "MIHAWK", "HANCOCK", "CROCODILE", "DOFLAMINGO", "KATAKURI", "KAIDO", "BIG MOM", "WHITEBEARD", "GOL D. ROGER", "GARP", "AKAINU", "AOKIJI", "KIZARU", "FUJITORA", "RYOKUGYU", "SMOKER", "TASHIGI", "KOBY", "VIVI", "YAMATO", "BON CLAY", "PERONA", "ENEL", "LUCCI", "KUMA", "IVANKOV", "SENGOKU", "REIJU", "O-TAMA", "MOMO NOSUKE", "EAST BLUE SAGA", "ARLONG PARK", "LOGUETOWN", "ALABASTA ARC", "SKYPIEA ARC", "WATER 7", "ENIES LOBBY", "THRILLER BARK", "SABAODY", "AMAZON LILY", "IMPEL DOWN", "MARINEFORD", "FISH-MAN ISLAND", "PUNK HAZARD", "DRESSROSA", "ZOU ARC", "WHOLE CAKE ISLAND", "WANO COUNTRY", "EGGHEAD ARC", "REVERIE", "ROMANCE DAWN", "ORANGE TOWN", "DRUM ISLAND", "LITTLE GARDEN", "JAYA", "ONIGASHIMA RAID", "GOMU GOMU NO MI", "MERA MERA NO MI", "HIE HIE NO MI", "GURA GURA NO MI", "OP OP NO MI", "YAMI YAMI NO MI", "OPE OPE NO MI", "BARA BARA NO MI", "HANA HANA NO MI", "NIKYU NIKYU NO MI", "MAGU MAGU NO MI", "PIKA PIKA NO MI", "ITO ITO NO MI", "SUNA SUNA NO MI", "MERA MERA", "DEVIL FRUIT", "LOGIA", "PARAMECIA", "ZOAN", "MYTHICAL ZOAN", "SMILE FRUIT", "AWAKENING", "OBSERVATION HAKI", "ARMAMENT HAKI", "CONQUEROR'S HAKI", "FUTURE SIGHT", "RYUO", "HAKI", "GEAR SECOND", "GEAR THIRD", "GEAR FOURTH", "GEAR FIFTH", "ASHURA", "DIABLE JAMBE", "SANTORYU", "ROKUSHIKI", "SULONG", "GRAND LINE", "RED LINE", "NEW WORLD", "EAST BLUE", "WEST BLUE", "NORTH BLUE", "SOUTH BLUE", "REVERSE MOUNTAIN", "CALM BELT", "LAUGH TALE", "RAFTEL", "OHARA", "MARY GEOISE", "EGGHEAD", "SKYPIEA", "WANO", "SABAODY ARCHIPELAGO", "ZOU", "ALABASTA", "FOUR EMPERORS' TERRITORY", "FOXY'S LONG RING LONG LAND", "STRAW HAT PIRATES", "RED HAIR PIRATES", "HEART PIRATES", "KID PIRATES", "ROGER PIRATES", "WHITEBEARD PIRATES", "BEAST PIRATES", "BIG MOM PIRATES", "BLACKBEARD PIRATES", "DONQUIXOTE FAMILY", "KUJA PIRATES", "FIRE TANK PIRATES", "REVOLUTIONARY ARMY", "MARINES", "WORLD GOVERNMENT", "CP9", "CP0", "SWORD", "SEVEN WARLORDS", "FOUR EMPERORS", "WORST GENERATION", "NINE RED SCABBARDS", "GERMA 66", "BAROQUE WORKS", "SUN PIRATES", "ENMA", "WADO ICHIMONJI", "SANDai KITETSU", "YORU", "SHUSUI", "ACE (SWORD)", "KIKOKU", "GRYPHON", "MURAKUMOGIRI", "MEITO", "BLACK BLADE", "CURSED SWORD", "DEN DEN MUSHI", "LOG POSE", "ETERNAL POSE", "VIVRE CARD", "PONEGLYPH", "ROAD PONEGLYPH", "PLUTON", "POSEIDON", "URANUS", "MOTHER FLAME", "PACIFISTA", "SERAPHIM", "DIAL", "SEASTONE", "BUSTER CALL", "THOUSAND SUNNY", "GOING MERRY", "ORO JACKSON", "POLAR TANG", "RED FORCE", "MOBY DICK", "CLIMATE-Tact", "KABUTO", "FRANKY SHOGUN", "GENERAL FRANKY", "ONE PIECE", "PIRATE KING", "BERRY", "WANTED POSTER", "TREASURE MAP", "SEA KING",  "ALL BLUE",  "BINKS' SAKE", "JOY BOY", "NIKA", "ANCIENT WEAPON",    "CELESTIAL DRAGON", "TENRYUBITO", "DENIZ TAŞI PRANGASI", "KUMA'S PAW", "KIBI DANGO", "ZUNESHA", "PUNK RECORDS", "VEGAPUNK SATELLITES", "FLORIAN TRIANGLE", "SEA TRAIN", "BUBBLE COATING", "KNOCK UP STREAM", "SKY ISLAND", "MINK TRIBE", "GIANTS", "FISH-MEN", "LUNARIANS", "KAIROSEKI", "TAMATE BOX", "TREASURE TREE ADAM", "SUNLIGHT TREE EVE"];
-    const CN_IMAGE_POOL = Array.from({length:27},(_,i)=>i+1);
-    const CN_IMAGE_NAMES = ["Sabo","Oden","Nami","Luffy","Kizaru","Kaido","Jinbe","Hancock","Garp","Franky","Dragon","Dofi","Chopper","Brook","Bigmom","Barto","Aokiji","Akainu","Ace","Zoro","Zeff","Whitebeard","Usop","Teach","Shanks","Sengoku","Sanji"];
+    const CN_IMAGE_POOL = Array.from({length:28},(_,i)=>i+1);
+    const CN_IMAGE_NAMES = ["Sabo","Oden","Nami","Luffy","Kizaru","Kaido","Jinbe","Hancock","Garp","Franky","Dragon","Dofi","Chopper","Brook","Bigmom","Barto","Aokiji","Akainu","Ace","Zoro","Zeff","Whitebeard","Usop","Teach","Shanks","Sengoku","Sanji","Yamato"];
     function cnCardImagePath(index, role){ const character=CN_IMAGE_NAMES[(Number(index)||1)-1]||CN_IMAGE_NAMES[0]; const variant=role==='blue'?'001':role==='red'?'002':'003'; return `Assets/Gizli Ajanlar/${character}_${variant}.png`; }
+    // Karakter kelimeleri mümkün olduğunda mutlaka kendi karakter çizimini kullanır.
+    // Görsel havuzunda karşılığı olmayan karakterler normal rastgele görsel almaya devam eder.
+    const CN_CHARACTER_IMAGE_ALIASES = {
+      'LUFFY':'Luffy','MONKEY D LUFFY':'Luffy','ZORO':'Zoro','RORONOA ZORO':'Zoro','NAMI':'Nami',
+      'USOPP':'Usop','GOD USOPP':'Usop','SANJI':'Sanji','CHOPPER':'Chopper','TONY TONY CHOPPER':'Chopper',
+      'ROBIN':'Robin','NICO ROBIN':'Robin','FRANKY':'Franky','BROOK':'Brook','JINBE':'Jinbe','JIMBEI':'Jinbe',
+      'SHANKS':'Shanks','BUGGY':'Barto','ACE':'Ace','PORTGAS D ACE':'Ace','SABO':'Sabo','BLACKBEARD':'Teach',
+      'MARSHALL D TEACH':'Teach','HANCOCK':'Hancock','BOA HANCOCK':'Hancock','DOFLAMINGO':'Dofi','DONQUIXOTE DOFLAMINGO':'Dofi',
+      'KAIDO':'Kaido','BIG MOM':'Bigmom','CHARLOTTE LINLIN':'Bigmom','WHITEBEARD':'Whitebeard','EDWARD NEWGATE':'Whitebeard',
+      'GARP':'Garp','MONKEY D GARP':'Garp','AKAINU':'Akainu','SAKAZUKI':'Akainu','AOKIJI':'Aokiji','KUZAN':'Aokiji',
+      'KIZARU':'Kizaru','BORSALEINO':'Kizaru','YAMATO':'Yamato','ODEN':'Oden','KOZUKI ODEN':'Oden','SENGOKU':'Sengoku',
+      'ZEPH':'Zeff','ZEP':'Zeff','ZEFF':'Zeff','DRAGON':'Dragon','MONKEY D DRAGON':'Dragon','BARTOLOMEO':'Barto','BARTO':'Barto'
+    };
+    function cnNormalizeCharacterWord(value){ return String(value||'').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Z0-9]/g,''); }
+    const CN_IMAGE_INDEX_BY_NAME = Object.fromEntries(CN_IMAGE_NAMES.map((name,i)=>[cnNormalizeCharacterWord(name),i+1]));
+    const CN_CHARACTER_IMAGE_INDEX = {};
+    Object.entries(CN_CHARACTER_IMAGE_ALIASES).forEach(([word,name])=>{const idx=CN_IMAGE_INDEX_BY_NAME[cnNormalizeCharacterWord(name)];if(idx)CN_CHARACTER_IMAGE_INDEX[cnNormalizeCharacterWord(word)]=idx;});
+    CN_IMAGE_NAMES.forEach((name,i)=>{CN_CHARACTER_IMAGE_INDEX[cnNormalizeCharacterWord(name)]=i+1;});
     function cnWordLengthClass(word){ const n=String(word||'').length; return n<=9?'cn-text-short':n<=16?'cn-text-medium':'cn-text-long'; }
     const cnShuffle = a => { const x=[...a]; for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];} return x; };
     function cnChooseTeam(team) { if (CN?.phase==='playing') return; const previousTeam=cnTeam; cnTeam=team; if(cnCaptain && previousTeam!==team) cnCaptain=false; cnTrackRole(); }
@@ -2201,7 +2219,11 @@
       const ids=Object.keys(players), blue=ids.filter(id=>players[id].team==='blue'), red=ids.filter(id=>players[id].team==='red');
       if(ids.length<4||ids.length>8||blue.length<2||red.length<2||!blue.some(id=>players[id].captain)||!red.some(id=>players[id].captain)){alert('4–8 oyuncu, iki takımda en az 2 oyuncu ve her takımda bir kaptan gerekli.');return;}
       const words=cnShuffle([...new Set(CN_WORDS)]).slice(0,28);
-      const imageDeck=cnShuffle(CN_IMAGE_POOL); while(imageDeck.length<words.length) imageDeck.push(CN_IMAGE_POOL[Math.floor(Math.random()*CN_IMAGE_POOL.length)]); const cardImages=Object.fromEntries(words.map((word,i)=>[word,imageDeck[i]]));
+      const imageDeck=cnShuffle(CN_IMAGE_POOL);
+      while(imageDeck.length<words.length) imageDeck.push(CN_IMAGE_POOL[Math.floor(Math.random()*CN_IMAGE_POOL.length)]);
+      const cardImages=Object.fromEntries(words.map((word,i)=>[word,imageDeck[i]]));
+      // Karakter kartlarında kelime-resim eşleşmesini zorunlu kıl. Görseli olmayan karakterler rastgele kalır.
+      words.forEach(word=>{const characterImage=CN_CHARACTER_IMAGE_INDEX[cnNormalizeCharacterWord(word)];if(characterImage)cardImages[word]=characterImage;});
       const first= Math.random()<.5?'red':'blue';
       const other=first==='red'?'blue':'red';
       const roles=cnShuffle([...Array(10).fill(first),...Array(9).fill(other),...Array(8).fill('neutral'),'assassin']);
