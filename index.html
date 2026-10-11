@@ -955,29 +955,283 @@
   .cn-word .cn-card-word.cn-text-long { font-size:clamp(6px, 1vw, 8px) !important; }
 }
 
-/* Suikastçı kartı: mor kartın üzerinde büyük çapraz kılıç ve uyarı simgesi. */
-.cn-word.assassin { position:relative !important; }
+/* Suikastçı kartı: yalnızca mor kenarlık ve merkezde uyarı işareti. */
+.cn-word.assassin {
+  position:relative !important;
+  border:3px solid #8b2bd0 !important;
+  box-shadow:0 0 0 1px rgba(139,43,208,.35) !important;
+}
 .cn-word.assassin::before {
-  content:"⚔️\A⚠️";
-  white-space:pre;
+  content:"⚠️";
   position:absolute;
+  inset:0;
   z-index:6;
-  inset:8% 5% 17%;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  font-family:system-ui, sans-serif;
-  font-size:clamp(2rem,5.2vw,5.4rem);
-  line-height:1.02;
-  color:#fff;
-  text-shadow:0 0 4px #ff162b,0 0 12px #ff162b,3px 4px 0 #390018;
-  background:radial-gradient(ellipse at center,rgba(25,0,25,.72),rgba(25,0,25,.18) 72%,transparent 100%);
+  font-family:system-ui,sans-serif;
+  font-size:clamp(2rem,5.5vw,4.4rem);
+  line-height:1;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.85));
   pointer-events:none;
 }
-.cn-word.assassin .cn-card-word { z-index:7 !important; }
-@media(max-width:520px){.cn-word.assassin::before{font-size:clamp(1.55rem,8vw,2.8rem)}}
-</style>
+@media(max-width:520px){
+  .cn-word.assassin::before{font-size:clamp(1.6rem,8vw,2.8rem)}
+}
+
+
+/* NakamaCode üst bölüm tasarımı: kaynak Gizli Ajanlar dosyasındaki görünüm */
+:root {
+  --ui-line: rgba(177, 195, 211, .19);
+  --ui-red: #e04455;
+  --ui-blue: #4b9bea;
+}
+\n/* Codenames: clearer hierarchy, compact top section and strong turn status. */
+#codenames { padding: clamp(12px, 1.8vw, 24px) !important; }
+#codenamesView { min-width: 0; }
+.cn-top {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center !important;
+  gap: 16px !important;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ui-line);
+}
+.cn-top-main .small { font-size: .76rem; letter-spacing: .12em; font-weight: 800; }
+.cn-top h2 {
+  font-size: clamp(1.65rem, 3vw, 2.25rem) !important;
+  margin: 2px 0 3px !important;
+  line-height: 1.08 !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.38);
+}
+.cn-small { color: #c3ced9; font-size: .91rem; line-height: 1.45; }
+#cnLeave {
+  min-height: 38px;
+  padding: 7px 12px !important;
+  border-radius: 8px;
+  font-size: .84rem;
+}
+.cn-team-orb {
+  width: 88px !important;
+  height: 88px !important;
+  flex-basis: 88px !important;
+  border: 3px solid rgba(255,255,255,.86) !important;
+  box-shadow: 0 0 0 4px rgba(0,0,0,.22), 0 7px 18px rgba(0,0,0,.3) !important;
+}
+.cn-team-orb .cn-orb-label { font-size: .55rem !important; }
+.cn-turn-status {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 7px 18px;
+  padding: 15px 18px !important;
+  margin: 14px 0 !important;
+  border: 1px solid rgba(255,255,255,.14);
+  border-left: 5px solid var(--ui-red);
+  border-radius: 13px !important;
+  background: linear-gradient(110deg, rgba(87,28,39,.7), rgba(9,19,32,.91) 72%);
+  text-align: left !important;
+}
+.cn-turn-status.team-blue {
+  border-left-color: var(--ui-blue);
+  background: linear-gradient(110deg, rgba(24,57,91,.75), rgba(9,19,32,.91) 72%);
+}
+.cn-status-title {
+  display: block;
+  font-size: clamp(1.15rem, 2.25vw, 1.75rem);
+  line-height: 1.14;
+  letter-spacing: .015em;
+  font-weight: 900;
+  color: #fff;
+  text-wrap: balance;
+}
+.cn-turn-status.team-red .cn-status-title { color: #ff8792; }
+.cn-turn-status.team-blue .cn-status-title { color: #8fcaff; }
+.cn-status-detail {
+  grid-column: 1;
+  color: #d0d9e3;
+  font-size: .9rem;
+  line-height: 1.4;
+}
+.cn-agent-summary {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cn-agent-heading {
+  width: 100%;
+  color: #c6d0db;
+  font-size: .66rem;
+  font-weight: 900;
+  letter-spacing: .11em;
+  text-align: right;
+}
+.cn-agent-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 58px;
+  height: 42px;
+  padding: 0 11px;
+  border-radius: 10px;
+  background: rgba(4,12,22,.65);
+  border: 1px solid rgba(255,255,255,.13);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+.cn-agent-count i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ui-red);
+  box-shadow: 0 0 0 3px rgba(224,68,85,.16);
+}
+.cn-agent-count.blue i { background: var(--ui-blue); box-shadow: 0 0 0 3px rgba(75,155,234,.16); }
+.cn-clue-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 12px 0 !important;
+  padding: 12px 16px !important;
+  border: 1px solid rgba(245,197,66,.25) !important;
+  border-radius: 12px !important;
+  background: rgba(7,16,28,.76) !important;
+}
+.cn-clue-label { font-size: .7rem; letter-spacing: .12em; }
+.cn-clue-value { font-size: clamp(1.25rem, 2.5vw, 1.8rem) !important; }
+.cn-clue-count { min-width: 44px !important; height: 44px !important; border-radius: 10px !important; }
+.cn-clue-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 118px minmax(132px, .28fr);
+  gap: 10px !important;
+  align-items: stretch !important;
+  margin: 12px 0 8px !important;
+}
+.cn-clue-row input#cnClueWord {
+  min-width: 0;
+  min-height: 54px !important;
+  margin: 0 !important;
+  padding: 13px 16px !important;
+  font-size: 1.05rem !important;
+}
+.cn-count-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  padding: 5px 8px 4px;
+  border: 1px solid #40536a;
+  border-radius: 10px;
+  background: rgba(5,14,26,.9);
+}
+.cn-count-control span {
+  display: block;
+  text-align: center;
+  color: #aebdcd;
+  font-size: .68rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+.cn-clue-row input#cnClueCount {
+  width: 100%;
+  min-width: 0;
+  min-height: 30px !important;
+  height: 32px;
+  margin: 0 !important;
+  padding: 1px 4px !important;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+  font-size: 1.25rem !important;
+  font-weight: 900;
+  color: #fff;
+  appearance: auto;
+}
+.cn-clue-row input#cnClueCount:focus { outline: 1px solid var(--straw); }
+.cn-clue-row button#cnClueSubmit {
+  width: 100%;
+  min-width: 0;
+  min-height: 54px !important;
+  margin: 0 !important;
+  padding: 12px 16px !important;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+.cn-rule-note { margin: 7px 2px 12px; font-size: .84rem; }
+.cn-board {
+  gap: clamp(5px, .65vw, 9px) !important;
+  margin-top: 12px !important;
+}
+.cn-word {
+  border-radius: 9px !important;
+  box-shadow: 0 3px 0 rgba(0,0,0,.24), 0 5px 12px rgba(0,0,0,.14) !important;
+  transition: transform .14s ease, filter .14s ease, box-shadow .14s ease !important;
+}
+.cn-word:not(:disabled):hover { transform: translateY(-2px); filter: brightness(1.045); }
+.cn-word:focus-visible { outline: 3px solid #fff0b8; outline-offset: 2px; }
+.cn-word.red { border-color: #ed4d5d !important; }
+.cn-word.blue { border-color: #4b9bea !important; }
+.cn-log-drawer { width: min(390px, 34vw) !important; }
+.cn-log-toggle { background: linear-gradient(180deg,#2c4056,#152235) !important; }
+.cn-log-title { font-size: 1rem; padding: 13px 15px; }
+.cn-log-drawer .cn-log { font-size: .9rem !important; line-height: 1.5; }
+.cn-log div { padding: 8px 0 !important; }
+@media (max-width: 900px) {
+  body:has(#codenames:not(.hidden)) .container,
+  body:has(#codenames:not(.hidden)) .app,
+  body:has(#codenames:not(.hidden)) main {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .cn-turn-status { grid-template-columns: minmax(0,1fr) auto; padding: 12px !important; }
+  .cn-status-title { font-size: clamp(1rem, 2.8vw, 1.35rem); }
+  .cn-agent-count { min-width: 48px; height: 38px; padding: 0 8px; font-size: 1.2rem; }
+  .cn-agent-count i { width: 10px; height: 10px; }
+  .cn-clue-row { grid-template-columns: minmax(0,1fr) 92px minmax(112px,.36fr) !important; }
+  .cn-clue-row button#cnClueSubmit { padding: 10px 8px !important; font-size: .9rem; }
+  .cn-log-drawer { width: min(350px, 70vw) !important; }
+}
+@media (max-width: 620px) {
+  .cn-top { grid-template-columns: minmax(0,1fr) auto; gap: 10px !important; }
+  .cn-top h2 { font-size: 1.55rem !important; }
+  .cn-team-orb { width: 66px !important; height: 66px !important; flex-basis: 66px !important; }
+  .cn-turn-status { grid-template-columns: minmax(0,1fr); gap: 8px; }
+  .cn-status-detail { grid-column: 1; }
+  .cn-agent-summary { grid-column: 1; grid-row: auto; justify-content: flex-start; gap: 6px; }
+  .cn-agent-heading { width: auto; align-self: center; text-align: left; margin-right: 4px; }
+  .cn-agent-count { min-width: 54px; }
+  .cn-clue-row { grid-template-columns: minmax(0,1fr) 82px !important; gap: 7px !important; }
+  .cn-clue-row input#cnClueWord { grid-column: 1 / -1; }
+  .cn-count-control { min-height: 54px; }
+  .cn-clue-row button#cnClueSubmit { min-height: 54px !important; }
+  .cn-board { gap: 3px !important; }
+  .cn-word { border-radius: 5px !important; }
+  .cn-log-drawer { top: 19vh !important; width: min(330px, 88vw) !important; }
+  .cn-log-drawer .cn-log { font-size: .86rem !important; }
+}
+@media (max-width: 380px) {
+  .cn-top h2 { font-size: 1.35rem !important; }
+  .cn-team-orb { width: 58px !important; height: 58px !important; flex-basis: 58px !important; }
+  .cn-status-title { font-size: 1rem; }
+  .cn-agent-heading { width: 100%; }
+  .cn-clue-row { grid-template-columns: minmax(0,1fr) 76px !important; }
+}\n\n</style>
 </head>
 <body class="lobby-mode">
   <!-- Background Music -->
@@ -2288,9 +2542,15 @@
         if(CN.phase!=='guess'||team!==CN.turn||captain)return;
         const word=String(action.word||'');if(!CN.words.includes(word)||CN.revealed[word])return;
         CN.proposals=CN.proposals||{};CN.proposals[word]=CN.proposals[word]||[];
-        if(CN.proposals[word].some(x=>x.id===from))return;
-        CN.proposals[word].push({id:from,name:players[from].name||'Oyuncu',avatar:players[from].avatar||'luffy',team});
-        CN.history.unshift((players[from].name||'Oyuncu')+' ('+(team==='red'?'Kırmızı':'Mavi')+') “'+word+'” kelimesini önerdi.');
+        const existingIndex=CN.proposals[word].findIndex(x=>x.id===from);
+        if(existingIndex>=0){
+          CN.proposals[word].splice(existingIndex,1);
+          if(CN.proposals[word].length===0)delete CN.proposals[word];
+          CN.history.unshift((players[from].name||'Oyuncu')+' “'+word+'” kelimesi için önerisini geri çekti.');
+        } else {
+          CN.proposals[word].push({id:from,name:players[from].name||'Oyuncu',avatar:players[from].avatar||'luffy',team});
+          CN.history.unshift((players[from].name||'Oyuncu')+' ('+(team==='red'?'Kırmızı':'Mavi')+') “'+word+'” kelimesini önerdi.');
+        }
       } else if(action.type==='reveal'){
         if(CN.phase!=='guess'||team!==CN.turn||captain)return;
         const word=String(action.word||'');if(!CN.words.includes(word)||CN.revealed[word])return;
@@ -2317,16 +2577,22 @@
       const teamName=t=>t==='red'?'Kırmızı':'Mavi';
       const orbTeam=team==='red'?'red':'blue';
       const orbLabel=team==='red'?'KIRMIZI':'MAVİ';
-      let h=`<div class="cn-top"><div class="cn-top-main"><div class="small">GRAND LINE ARCADE</div><h2 style="font-family:'Pirata One',cursive;color:var(--straw);font-size:2rem">🕵️ Gizli Ajanlar</h2><div class="cn-small">Oda: <b>${auEsc(roomCode)}</b></div><button class="secondary" id="cnLeave" style="width:auto;margin:8px 0 0;padding:8px 12px">← Lobiye Dön</button></div><div class="cn-team-orb ${orbTeam}"><span class="cn-orb-label">SENİN TAKIMIN</span><span>${orbLabel}</span></div></div>`;
-      const turnClass=CN.turn==='red'?'cn-turn-red':'cn-turn-blue';
-      const statusText=CN.phase==='finished'?'OYUN BİTTİ':CN.phase==='clue'?`${teamName(CN.turn).toLocaleUpperCase('tr-TR')} TAKIM KAPTANI İPUCU VERİYOR`:`${teamName(CN.turn).toLocaleUpperCase('tr-TR')} TAKIM TAHMİN YAPIYOR`;
-      h+=`<div class="cn-turn cn-turn-status ${turnClass}"><b>${statusText}</b><div class="cn-agent-counters"><span class="cn-agent-counter red">🔴 Kırmızı <strong>${CN.remaining.red}</strong></span><span class="cn-agent-counter blue">🔵 Mavi <strong>${CN.remaining.blue}</strong></span></div></div>`;
+      let h=`<div class="cn-top"><div class="cn-top-main"><div class="small">GRAND LINE ARCADE</div><h2 style="font-family:'Pirata One',cursive;color:var(--straw);font-size:2rem">NakamaCode</h2><div class="cn-small">Oda: <b>${auEsc(roomCode)}</b></div><button class="secondary" id="cnLeave" style="width:auto;margin:8px 0 0;padding:8px 12px">← Lobiye Dön</button></div><div class="cn-team-orb ${orbTeam}"><span class="cn-orb-label">SENİN TAKIMIN</span><span>${orbLabel}</span></div></div>`;
+      const cnStatusTitle = CN.phase==='finished'
+         ? (teamName(CN.winner).toUpperCase()+' TAKIM KAZANDI')
+         : CN.phase==='clue'
+           ? (teamName(CN.turn).toUpperCase()+' TAKIM '+(captain&&team===CN.turn?'KAPTANI İPUCU VERİYOR':'KAPTANINDAN İPUCU BEKLENİYOR'))
+           : (teamName(CN.turn).toUpperCase()+' TAKIM TAHMİN YAPIYOR');
+      const cnStatusDetail = CN.phase==='finished'
+         ? 'Yeni maç için lobiye dönüp yeni oda oluşturabilirsiniz.'
+         : CN.phase==='clue'
+           ? (captain&&team===CN.turn?'Tek kelimelik ipucunu yaz ve takımına gönder.':'Kaptanın ipucunu vermesini bekle.')
+           : (team===CN.turn?(captain?'Takımını dinle; kaptan bu tur kart seçemez.':'Takımınla konuş ve tahminini seç.'):'Rakip takımın turu. Sıranın gelmesini bekle.');
+      h+=`<div class="cn-turn cn-turn-status team-${CN.turn} phase-${CN.phase}"><b class="cn-status-title">${cnStatusTitle}</b><div class="cn-status-detail">${cnStatusDetail}</div><div class="cn-agent-summary"><span class="cn-agent-heading">KALAN AJANLAR</span><span class="cn-agent-count red"><i></i>${CN.remaining.red}</span><span class="cn-agent-count blue"><i></i>${CN.remaining.blue}</span></div></div>`;
       if(CN.clue && CN.phase!=='finished'){h+=`<div class="cn-clue-banner"><div><div class="cn-clue-label">Verilen ipucu</div><div class="cn-clue-value">${auEsc(CN.clue.word)}</div></div><div class="cn-clue-count">${Number(CN.clue.count)||0}</div></div>`;}
-      if(CN.phase==='clue'&&captain&&team===CN.turn){h+='<label for="cnClueWord" class="cn-small" style="display:block;font-size:1rem;font-weight:900;color:var(--straw);margin:8px 0 5px">KAPTANIN İPUCU</label><div class="cn-clue-row"><input id="cnClueWord" maxlength="28" placeholder="Tek kelimelik ipucu"><div class="cn-count-control"><button type="button" id="cnCountDown" aria-label="Tahmin hakkını azalt">−</button><input id="cnClueCount" type="number" min="0" max="9" step="1" value="2" aria-label="Tahmin hakkı"><button type="button" id="cnCountUp" aria-label="Tahmin hakkını artır">+</button></div><button id="cnClueSubmit">İPUCU VER</button></div><div class="cn-small">İpucu, tahtadaki kelimelerden biriyle aynı olamaz. Kaptan bu tur tahmin yapmaz.</div>';}
+      if(CN.phase==='clue'&&captain&&team===CN.turn){h+='<div class="cn-clue-row"><input id="cnClueWord" maxlength="28" placeholder="Tek kelimelik ipucu"><input id="cnClueCount" type="number" min="0" max="9" value="2" style="max-width:85px;flex:0 0 85px"><button id="cnClueSubmit">İpucu ver</button></div><div class="cn-small">İpucu, tahtadaki kelimelerden biriyle aynı olamaz. Kaptan bu tur tahmin yapmaz.</div>';}
       else if(CN.phase==='guess'&&team===CN.turn&&!captain){h+='<div class="cn-small">Takımınla konuş, ardından bir kelime kartı seç. En fazla '+CN.guessesLeft+' tahmin hakkın var.</div><button id="cnEndTurn" class="secondary" style="width:auto;margin:8px 0;padding:9px 12px">Turu bitir</button>';}
       else if(CN.phase==='guess'&&team===CN.turn&&captain){h+='<div class="cn-small">Takımın tahmin ediyor. Kaptan olarak kelime kartı seçemezsin.</div>';}
-      const statusPeople=Object.entries(players).map(([id,p])=>{const t=p.team||CN.teams?.[id]||'';if(!t)return '';const label=CN.phase==='clue'?(CN.turn===t&&p.captain?'İpucu veriyor':CN.turn===t?'Kaptan ipucunu bekliyor':'Rakip takımın sırası'):CN.phase==='guess'?(CN.turn===t?(p.captain?'Takımı izliyor':'Tahmin yapıyor'):'Bekliyor'): 'Oyun bitti';return `<span class="cn-player-status ${t}"><img src="${avatarSrc(p.avatar)}" alt=""><span>${auEsc(p.name)} · ${label}</span></span>`;}).join('');
-      if(statusPeople)h+=`<div class="cn-player-statuses">${statusPeople}</div>`;
       h+='<div class="cn-game-layout"><div class="cn-board">'+CN.words.map(w=>{const revealedRole=CN.revealed[w];const role=revealedRole||(captain&&cnPrivateKey?cnPrivateKey[w]:'');const proposals=CN.proposals?.[w]||[];const mineProposed=proposals.some(x=>x.id===myId);const proposalClass=proposals.length?(proposals[0].team==='red'?'cn-proposed-red':'cn-proposed-blue'):'';const canPropose=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&active;const canConfirm=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&proposals.length>0&&active;const imageIndex=CN.cardImages?.[w];const image=cnCardImagePath(imageIndex,role);const wordLengthClass=cnWordLengthClass(w);const showFullCard=!!revealedRole||(captain&&!!cnPrivateKey);const face=showFullCard?`<img class="cn-full-card" src="${image||''}" alt=""><span class="cn-card-word ${wordLengthClass}">${auEsc(w)}</span>`:`<span class="cn-card-word cn-hidden-word ${wordLengthClass}" style="display:flex;position:static;height:auto;padding:10px">${auEsc(w)}</span>`;const avatars=proposals.length?`<span class="cn-proposer-stack">${proposals.map(x=>`<img class="cn-proposer-avatar" src="${avatarSrc(x.avatar)}" title="${auEsc(x.name)} önerdi" alt="">`).join('')}</span>`:'';const confirm=canConfirm?`<span class="cn-confirm-reveal" role="button" tabindex="0" data-cn-confirm="${auEsc(w)}" title="Önerilen kartı aç" aria-label="${auEsc(w)} kartını aç">✓</span>`:(captain&&revealedRole?'<span class="cn-revealed-check" title="Kart açıldı">✓</span>':'');return `<button class="cn-word ${role||''} ${captain&&cnPrivateKey&&!revealedRole?'cn-secret-card':''} ${proposalClass}" data-cn-word="${auEsc(w)}" ${(!(canPropose||canConfirm))?'disabled':''}>${face}${avatars}${confirm}</button>`;}).join('')+'</div><aside class="cn-log-drawer '+(cnLogOpen?'is-open':'')+'" id="cnLogPanel"><button type="button" class="cn-log-toggle" id="cnLogToggle" aria-expanded="'+(cnLogOpen?'true':'false')+'" aria-label="Olay günlüğünü '+(cnLogOpen?'kapat':'aç')+'"><span class="cn-log-arrow">'+(cnLogOpen?'‹':'›')+'</span><span class="cn-log-tab-label">OLAY GÜNLÜĞÜ</span></button><div class="cn-log-drawer-content"><div class="cn-log-title">📜 Olay günlüğü</div><div class="cn-log">'+(CN.history||[]).map(x=>`<div>${auEsc(x)}</div>`).join('')+'</div></div></aside></div>';
       if(CN.phase==='finished')h+=`<h3 style="text-align:center;color:var(--straw);margin:10px">🏆 ${teamName(CN.winner)} takım kazandı!</h3><p class="cn-small" style="text-align:center">Yeni maç için lobiye dönüp yeni oda oluşturun.</p>`;
       view.innerHTML=h;
@@ -2334,11 +2600,6 @@
       const clueWordInput=document.getElementById('cnClueWord'); const clueCountInput=document.getElementById('cnClueCount'); if(clueWordInput){clueWordInput.value=savedClueWord; if(editingClue&&activeEl.id==='cnClueWord'){clueWordInput.focus();clueWordInput.setSelectionRange(savedStart===null?clueWordInput.value.length:savedStart,savedEnd===null?clueWordInput.value.length:savedEnd);}} if(clueCountInput){clueCountInput.value=savedClueCount; if(editingClue&&activeEl.id==='cnClueCount')clueCountInput.focus();}
       document.getElementById('cnEndTurn')?.addEventListener('click',()=>cnAction({type:'end'}));
       document.getElementById('cnClueSubmit')?.addEventListener('click',()=>{const word=document.getElementById('cnClueWord').value.trim();const count=Number(document.getElementById('cnClueCount').value);if(!word||/\s/.test(word)){alert('İpucu tek kelime olmalı.');return;}cnAction({type:'clue',word,count});});
-      const countInput=document.getElementById('cnClueCount');
-      const adjustCount=delta=>{if(!countInput)return;const current=Number(countInput.value)||0;countInput.value=Math.max(Number(countInput.min)||0,Math.min(Number(countInput.max)||9,current+delta));};
-      document.getElementById('cnCountDown')?.addEventListener('click',()=>adjustCount(-1));
-      document.getElementById('cnCountUp')?.addEventListener('click',()=>adjustCount(1));
-      countInput?.addEventListener('change',()=>{const min=Number(countInput.min)||0,max=Number(countInput.max)||9;countInput.value=Math.max(min,Math.min(max,Math.round(Number(countInput.value)||0)));});
       view.querySelectorAll('[data-cn-word]').forEach(btn=>btn.addEventListener('click',ev=>{if(ev.target.closest('[data-cn-confirm]'))return;if(!btn.disabled)cnAction({type:'propose',word:btn.dataset.cnWord});}));
       view.querySelectorAll('[data-cn-confirm]').forEach(el=>{const confirm=()=>cnAction({type:'reveal',word:el.dataset.cnConfirm});el.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();confirm();});el.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();ev.stopPropagation();confirm();}});});
       const logToggle=document.getElementById('cnLogToggle'); if(logToggle)logToggle.onclick=()=>{cnLogOpen=!cnLogOpen;const panel=document.getElementById('cnLogPanel');panel?.classList.toggle('is-open',cnLogOpen);logToggle.setAttribute('aria-expanded',String(cnLogOpen));logToggle.setAttribute('aria-label','Olay günlüğünü '+(cnLogOpen?'kapat':'aç'));const arrow=logToggle.querySelector('.cn-log-arrow');if(arrow)arrow.textContent=cnLogOpen?'›':'‹';};
