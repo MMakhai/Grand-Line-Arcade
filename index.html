@@ -936,7 +936,7 @@
 .cn-word .cn-full-card { width:100% !important; height:100% !important; object-fit:fill !important; filter:none !important; }
 .cn-word .cn-card-word {
   left:10.5% !important; right:10.5% !important;
-  bottom:5.8% !important; height:18.2% !important;
+  bottom:2.5% !important; height:18.2% !important;
   padding:0 5px !important; line-height:1.04 !important;
   display:flex !important; align-items:center !important; justify-content:center !important;
   text-align:center !important; overflow:hidden !important; overflow-wrap:anywhere !important;
@@ -944,11 +944,39 @@
 }
 .cn-word .cn-card-word.cn-text-medium { font-size:clamp(8px, .72vw, 12px) !important; }
 .cn-word .cn-card-word.cn-text-long { font-size:clamp(7px, .62vw, 10px) !important; letter-spacing:-.015em !important; }
+/* Unrevealed cards: dark text on the light card face for easy reading. */
+.cn-word .cn-card-word.cn-hidden-word {
+  color:#111 !important;
+  text-shadow:none !important;
+}
 @media(max-width:900px) {
   .cn-word .cn-card-word { font-size:clamp(7px, 1.4vw, 11px) !important; }
   .cn-word .cn-card-word.cn-text-medium { font-size:clamp(6.5px, 1.2vw, 9px) !important; }
   .cn-word .cn-card-word.cn-text-long { font-size:clamp(6px, 1vw, 8px) !important; }
 }
+
+/* Suikastçı kartı: mor kartın üzerinde büyük çapraz kılıç ve uyarı simgesi. */
+.cn-word.assassin { position:relative !important; }
+.cn-word.assassin::before {
+  content:"⚔️\A⚠️";
+  white-space:pre;
+  position:absolute;
+  z-index:6;
+  inset:8% 5% 17%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-family:system-ui, sans-serif;
+  font-size:clamp(2rem,5.2vw,5.4rem);
+  line-height:1.02;
+  color:#fff;
+  text-shadow:0 0 4px #ff162b,0 0 12px #ff162b,3px 4px 0 #390018;
+  background:radial-gradient(ellipse at center,rgba(25,0,25,.72),rgba(25,0,25,.18) 72%,transparent 100%);
+  pointer-events:none;
+}
+.cn-word.assassin .cn-card-word { z-index:7 !important; }
+@media(max-width:520px){.cn-word.assassin::before{font-size:clamp(1.55rem,8vw,2.8rem)}}
 </style>
 </head>
 <body class="lobby-mode">
@@ -2219,11 +2247,24 @@
       const ids=Object.keys(players), blue=ids.filter(id=>players[id].team==='blue'), red=ids.filter(id=>players[id].team==='red');
       if(ids.length<4||ids.length>8||blue.length<2||red.length<2||!blue.some(id=>players[id].captain)||!red.some(id=>players[id].captain)){alert('4–8 oyuncu, iki takımda en az 2 oyuncu ve her takımda bir kaptan gerekli.');return;}
       const words=cnShuffle([...new Set(CN_WORDS)]).slice(0,28);
-      const imageDeck=cnShuffle(CN_IMAGE_POOL);
-      while(imageDeck.length<words.length) imageDeck.push(CN_IMAGE_POOL[Math.floor(Math.random()*CN_IMAGE_POOL.length)]);
-      const cardImages=Object.fromEntries(words.map((word,i)=>[word,imageDeck[i]]));
-      // Karakter kartlarında kelime-resim eşleşmesini zorunlu kıl. Görseli olmayan karakterler rastgele kalır.
-      words.forEach(word=>{const characterImage=CN_CHARACTER_IMAGE_INDEX[cnNormalizeCharacterWord(word)];if(characterImage)cardImages[word]=characterImage;});
+      // Önce tüm kelimeleri tara: resim havuzunda karşılığı olan korsanlara kendi görsellerini ayır.
+      // Bu görseller rastgele dağıtım havuzundan çıkarılır; böylece ör. Usopp iki kartta görünmez.
+      const cardImages = {};
+      const reservedImageIndexes = new Set();
+      const matchedWords = new Set();
+      words.forEach(word => {
+        const characterImage = CN_CHARACTER_IMAGE_INDEX[cnNormalizeCharacterWord(word)];
+        if (characterImage && !reservedImageIndexes.has(characterImage)) {
+          cardImages[word] = characterImage;
+          reservedImageIndexes.add(characterImage);
+          matchedWords.add(word);
+        }
+      });
+      // Eşleşmeyen kelimelere yalnızca henüz kullanılmamış görselleri rastgele ata.
+      const remainingImages = cnShuffle(CN_IMAGE_POOL.filter(index => !reservedImageIndexes.has(index)));
+      words.forEach(word => {
+        if (!matchedWords.has(word)) cardImages[word] = remainingImages.pop();
+      });
       const first= Math.random()<.5?'red':'blue';
       const other=first==='red'?'blue':'red';
       const roles=cnShuffle([...Array(10).fill(first),...Array(9).fill(other),...Array(8).fill('neutral'),'assassin']);
@@ -2277,11 +2318,15 @@
       const orbTeam=team==='red'?'red':'blue';
       const orbLabel=team==='red'?'KIRMIZI':'MAVİ';
       let h=`<div class="cn-top"><div class="cn-top-main"><div class="small">GRAND LINE ARCADE</div><h2 style="font-family:'Pirata One',cursive;color:var(--straw);font-size:2rem">🕵️ Gizli Ajanlar</h2><div class="cn-small">Oda: <b>${auEsc(roomCode)}</b></div><button class="secondary" id="cnLeave" style="width:auto;margin:8px 0 0;padding:8px 12px">← Lobiye Dön</button></div><div class="cn-team-orb ${orbTeam}"><span class="cn-orb-label">SENİN TAKIMIN</span><span>${orbLabel}</span></div></div>`;
-      h+=`<div class="cn-turn cn-turn-status"><b>${CN.phase==='finished'?'Oyun bitti':CN.phase==='clue'?teamName(CN.turn)+' takımının kaptanı ipucu versin':teamName(CN.turn)+' takımı tahmin ediyor'}</b><div class="cn-small">Ajanlar: 🔴 ${CN.remaining.red} · 🔵 ${CN.remaining.blue}</div></div>`;
+      const turnClass=CN.turn==='red'?'cn-turn-red':'cn-turn-blue';
+      const statusText=CN.phase==='finished'?'OYUN BİTTİ':CN.phase==='clue'?`${teamName(CN.turn).toLocaleUpperCase('tr-TR')} TAKIM KAPTANI İPUCU VERİYOR`:`${teamName(CN.turn).toLocaleUpperCase('tr-TR')} TAKIM TAHMİN YAPIYOR`;
+      h+=`<div class="cn-turn cn-turn-status ${turnClass}"><b>${statusText}</b><div class="cn-agent-counters"><span class="cn-agent-counter red">🔴 Kırmızı <strong>${CN.remaining.red}</strong></span><span class="cn-agent-counter blue">🔵 Mavi <strong>${CN.remaining.blue}</strong></span></div></div>`;
       if(CN.clue && CN.phase!=='finished'){h+=`<div class="cn-clue-banner"><div><div class="cn-clue-label">Verilen ipucu</div><div class="cn-clue-value">${auEsc(CN.clue.word)}</div></div><div class="cn-clue-count">${Number(CN.clue.count)||0}</div></div>`;}
-      if(CN.phase==='clue'&&captain&&team===CN.turn){h+='<div class="cn-clue-row"><input id="cnClueWord" maxlength="28" placeholder="Tek kelimelik ipucu"><input id="cnClueCount" type="number" min="0" max="9" value="2" style="max-width:85px;flex:0 0 85px"><button id="cnClueSubmit">İpucu ver</button></div><div class="cn-small">İpucu, tahtadaki kelimelerden biriyle aynı olamaz. Kaptan bu tur tahmin yapmaz.</div>';}
+      if(CN.phase==='clue'&&captain&&team===CN.turn){h+='<label for="cnClueWord" class="cn-small" style="display:block;font-size:1rem;font-weight:900;color:var(--straw);margin:8px 0 5px">KAPTANIN İPUCU</label><div class="cn-clue-row"><input id="cnClueWord" maxlength="28" placeholder="Tek kelimelik ipucu"><div class="cn-count-control"><button type="button" id="cnCountDown" aria-label="Tahmin hakkını azalt">−</button><input id="cnClueCount" type="number" min="0" max="9" step="1" value="2" aria-label="Tahmin hakkı"><button type="button" id="cnCountUp" aria-label="Tahmin hakkını artır">+</button></div><button id="cnClueSubmit">İPUCU VER</button></div><div class="cn-small">İpucu, tahtadaki kelimelerden biriyle aynı olamaz. Kaptan bu tur tahmin yapmaz.</div>';}
       else if(CN.phase==='guess'&&team===CN.turn&&!captain){h+='<div class="cn-small">Takımınla konuş, ardından bir kelime kartı seç. En fazla '+CN.guessesLeft+' tahmin hakkın var.</div><button id="cnEndTurn" class="secondary" style="width:auto;margin:8px 0;padding:9px 12px">Turu bitir</button>';}
       else if(CN.phase==='guess'&&team===CN.turn&&captain){h+='<div class="cn-small">Takımın tahmin ediyor. Kaptan olarak kelime kartı seçemezsin.</div>';}
+      const statusPeople=Object.entries(players).map(([id,p])=>{const t=p.team||CN.teams?.[id]||'';if(!t)return '';const label=CN.phase==='clue'?(CN.turn===t&&p.captain?'İpucu veriyor':CN.turn===t?'Kaptan ipucunu bekliyor':'Rakip takımın sırası'):CN.phase==='guess'?(CN.turn===t?(p.captain?'Takımı izliyor':'Tahmin yapıyor'):'Bekliyor'): 'Oyun bitti';return `<span class="cn-player-status ${t}"><img src="${avatarSrc(p.avatar)}" alt=""><span>${auEsc(p.name)} · ${label}</span></span>`;}).join('');
+      if(statusPeople)h+=`<div class="cn-player-statuses">${statusPeople}</div>`;
       h+='<div class="cn-game-layout"><div class="cn-board">'+CN.words.map(w=>{const revealedRole=CN.revealed[w];const role=revealedRole||(captain&&cnPrivateKey?cnPrivateKey[w]:'');const proposals=CN.proposals?.[w]||[];const mineProposed=proposals.some(x=>x.id===myId);const proposalClass=proposals.length?(proposals[0].team==='red'?'cn-proposed-red':'cn-proposed-blue'):'';const canPropose=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&active;const canConfirm=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&proposals.length>0&&active;const imageIndex=CN.cardImages?.[w];const image=cnCardImagePath(imageIndex,role);const wordLengthClass=cnWordLengthClass(w);const showFullCard=!!revealedRole||(captain&&!!cnPrivateKey);const face=showFullCard?`<img class="cn-full-card" src="${image||''}" alt=""><span class="cn-card-word ${wordLengthClass}">${auEsc(w)}</span>`:`<span class="cn-card-word cn-hidden-word ${wordLengthClass}" style="display:flex;position:static;height:auto;padding:10px">${auEsc(w)}</span>`;const avatars=proposals.length?`<span class="cn-proposer-stack">${proposals.map(x=>`<img class="cn-proposer-avatar" src="${avatarSrc(x.avatar)}" title="${auEsc(x.name)} önerdi" alt="">`).join('')}</span>`:'';const confirm=canConfirm?`<span class="cn-confirm-reveal" role="button" tabindex="0" data-cn-confirm="${auEsc(w)}" title="Önerilen kartı aç" aria-label="${auEsc(w)} kartını aç">✓</span>`:(captain&&revealedRole?'<span class="cn-revealed-check" title="Kart açıldı">✓</span>':'');return `<button class="cn-word ${role||''} ${captain&&cnPrivateKey&&!revealedRole?'cn-secret-card':''} ${proposalClass}" data-cn-word="${auEsc(w)}" ${(!(canPropose||canConfirm))?'disabled':''}>${face}${avatars}${confirm}</button>`;}).join('')+'</div><aside class="cn-log-drawer '+(cnLogOpen?'is-open':'')+'" id="cnLogPanel"><button type="button" class="cn-log-toggle" id="cnLogToggle" aria-expanded="'+(cnLogOpen?'true':'false')+'" aria-label="Olay günlüğünü '+(cnLogOpen?'kapat':'aç')+'"><span class="cn-log-arrow">'+(cnLogOpen?'‹':'›')+'</span><span class="cn-log-tab-label">OLAY GÜNLÜĞÜ</span></button><div class="cn-log-drawer-content"><div class="cn-log-title">📜 Olay günlüğü</div><div class="cn-log">'+(CN.history||[]).map(x=>`<div>${auEsc(x)}</div>`).join('')+'</div></div></aside></div>';
       if(CN.phase==='finished')h+=`<h3 style="text-align:center;color:var(--straw);margin:10px">🏆 ${teamName(CN.winner)} takım kazandı!</h3><p class="cn-small" style="text-align:center">Yeni maç için lobiye dönüp yeni oda oluşturun.</p>`;
       view.innerHTML=h;
@@ -2289,6 +2334,11 @@
       const clueWordInput=document.getElementById('cnClueWord'); const clueCountInput=document.getElementById('cnClueCount'); if(clueWordInput){clueWordInput.value=savedClueWord; if(editingClue&&activeEl.id==='cnClueWord'){clueWordInput.focus();clueWordInput.setSelectionRange(savedStart===null?clueWordInput.value.length:savedStart,savedEnd===null?clueWordInput.value.length:savedEnd);}} if(clueCountInput){clueCountInput.value=savedClueCount; if(editingClue&&activeEl.id==='cnClueCount')clueCountInput.focus();}
       document.getElementById('cnEndTurn')?.addEventListener('click',()=>cnAction({type:'end'}));
       document.getElementById('cnClueSubmit')?.addEventListener('click',()=>{const word=document.getElementById('cnClueWord').value.trim();const count=Number(document.getElementById('cnClueCount').value);if(!word||/\s/.test(word)){alert('İpucu tek kelime olmalı.');return;}cnAction({type:'clue',word,count});});
+      const countInput=document.getElementById('cnClueCount');
+      const adjustCount=delta=>{if(!countInput)return;const current=Number(countInput.value)||0;countInput.value=Math.max(Number(countInput.min)||0,Math.min(Number(countInput.max)||9,current+delta));};
+      document.getElementById('cnCountDown')?.addEventListener('click',()=>adjustCount(-1));
+      document.getElementById('cnCountUp')?.addEventListener('click',()=>adjustCount(1));
+      countInput?.addEventListener('change',()=>{const min=Number(countInput.min)||0,max=Number(countInput.max)||9;countInput.value=Math.max(min,Math.min(max,Math.round(Number(countInput.value)||0)));});
       view.querySelectorAll('[data-cn-word]').forEach(btn=>btn.addEventListener('click',ev=>{if(ev.target.closest('[data-cn-confirm]'))return;if(!btn.disabled)cnAction({type:'propose',word:btn.dataset.cnWord});}));
       view.querySelectorAll('[data-cn-confirm]').forEach(el=>{const confirm=()=>cnAction({type:'reveal',word:el.dataset.cnConfirm});el.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();confirm();});el.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();ev.stopPropagation();confirm();}});});
       const logToggle=document.getElementById('cnLogToggle'); if(logToggle)logToggle.onclick=()=>{cnLogOpen=!cnLogOpen;const panel=document.getElementById('cnLogPanel');panel?.classList.toggle('is-open',cnLogOpen);logToggle.setAttribute('aria-expanded',String(cnLogOpen));logToggle.setAttribute('aria-label','Olay günlüğünü '+(cnLogOpen?'kapat':'aç'));const arrow=logToggle.querySelector('.cn-log-arrow');if(arrow)arrow.textContent=cnLogOpen?'›':'‹';};
