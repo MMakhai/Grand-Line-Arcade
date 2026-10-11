@@ -977,6 +977,100 @@
 }
 .cn-word.assassin .cn-card-word { z-index:7 !important; }
 @media(max-width:520px){.cn-word.assassin::before{font-size:clamp(1.55rem,8vw,2.8rem)}}
+
+    /* Grand Line Arcade — ortak UI/UX iyileştirmeleri (görsel/işlev korumalı CSS katmanı) */
+    :root{
+      --ui-space-1:4px;--ui-space-2:8px;--ui-space-3:12px;--ui-space-4:16px;--ui-space-5:22px;
+      --ui-radius-sm:8px;--ui-radius-md:12px;--ui-radius-lg:16px;
+      --ui-control-height:44px;--ui-focus:0 0 0 3px rgba(245,197,66,.34);
+      --ui-red:#c93649;--ui-blue:#2878cb;
+    }
+    html{scroll-behavior:smooth}
+    body{font-size:16px;line-height:1.5}
+    button,input,textarea,select{font:inherit}
+    button{min-height:var(--ui-control-height);line-height:1.25}
+    button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--straw);outline-offset:2px;box-shadow:var(--ui-focus)}
+    input,textarea,select{min-height:var(--ui-control-height);line-height:1.35}
+    img{max-width:100%}
+    .container{width:min(100%,1100px)}
+    .card{padding:clamp(14px,2.2vw,24px);border-radius:var(--ui-radius-lg);margin-bottom:var(--ui-space-4)}
+    .section-title{font-size:.95rem;line-height:1.3;margin:18px 0 9px}
+    .small,.status,.room-meta,.mode-desc{line-height:1.5}
+    .small{font-size:.92rem}
+    .mode-grid{gap:12px}
+    .mode-tile{min-width:0;min-height:112px;border-radius:var(--ui-radius-md);padding:12px;overflow:hidden}
+    .mode-tile img.mode-poster{display:block;width:100%;height:clamp(110px,17vw,180px);object-fit:contain;object-position:center}
+    .mode-tile:focus-visible,.mode-tile.active{outline-offset:2px}
+    .home-actions,.lobby-grid{gap:12px}
+    .player-list li,.room-list li{min-width:0;flex-wrap:wrap;line-height:1.4}
+    .player-list li>* ,.room-list li>*{min-width:0;overflow-wrap:anywhere}
+    .player-avatar{flex:0 0 32px}
+    .view-nav{gap:8px}
+    .view-nav button{min-height:40px}
+    .room-code{letter-spacing:.06em}
+    .result-box{line-height:1.4;overflow-wrap:anywhere}
+    .vote-options button,.cn-pick{min-height:42px}
+    .au-layout,.au-board,.bounty-layout,.den-board,.secret-layout{min-width:0;max-width:100%}
+    .au-side,.au-panel,.qa-entry,.bounty-private,.taboo-card,.den-board{border-radius:var(--ui-radius-md)}
+    .au-money,.den-clue-count,.cn-clue-count{font-variant-numeric:tabular-nums}
+    .au-row{align-items:stretch;flex-wrap:wrap}
+    .au-row>*{min-width:0}
+    .au-char{overflow-wrap:anywhere;line-height:1.2}
+    .au-log,.cn-log{overflow-wrap:anywhere}
+    .bounty-layout{gap:14px}
+    .bounty-main,.bounty-side,.bounty-player,.qa-entry{min-width:0}
+    .qa-question,.qa-answer,.secret-name{overflow-wrap:anywhere;word-break:normal;line-height:1.45}
+    .den-word-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,145px),1fr))}
+    .den-duration-option{min-height:40px}
+    .den-emoji-library{align-items:stretch}
+    .den-emoji-pick{min-height:48px}
+    .cn-top{align-items:center;gap:12px}
+    .cn-top h2{line-height:1.15;margin:2px 0 4px}
+    .cn-team-orb{box-shadow:0 0 0 2px rgba(0,0,0,.18);}
+    .cn-turn-status{padding:12px 14px;border-radius:var(--ui-radius-md);margin:10px 0;font-size:clamp(1rem,1.5vw,1.22rem);font-weight:800}
+    .cn-clue-row{display:grid;grid-template-columns:minmax(0,1fr) 84px auto;gap:8px;align-items:stretch}
+    .cn-clue-row input{min-width:0;margin:0;min-height:48px}
+    .cn-clue-row button{width:auto;min-width:120px;margin:0;min-height:48px}
+    .cn-board{gap:clamp(4px,.55vw,8px)}
+    .cn-word{min-width:0;touch-action:manipulation}
+    .cn-log-panel{min-width:0}
+    .cn-log-panel summary{min-height:44px;align-items:center}
+    .cn-log{overflow-wrap:anywhere}
+    #audio-controls{max-width:calc(100vw - 20px)}
+    @media(max-width:900px){
+      .container{max-width:100%}
+      .cn-clue-row{grid-template-columns:minmax(0,1fr) 76px}
+      .cn-clue-row button{grid-column:1/-1;width:100%}
+      .cn-game-layout{grid-template-columns:minmax(0,1fr)}
+      .cn-log-panel{position:relative;top:auto;max-height:none}
+    }
+    @media(max-width:620px){
+      body{padding:12px 8px;font-size:15px}
+      .container{width:100%}
+      .card{padding:13px;border-radius:12px}
+      .mode-grid,.lobby-grid{grid-template-columns:minmax(0,1fr);gap:9px}
+      .mode-tile{min-height:0;padding:10px}
+      .mode-tile img.mode-poster{height:clamp(105px,34vw,155px)}
+      .mode-name{font-size:1rem}
+      .mode-desc{font-size:.82rem}
+      .player-list li,.room-list li{padding:9px 10px}
+      .cn-top{align-items:flex-start}
+      .cn-top-main{min-width:0}
+      .cn-top h2{font-size:1.6rem!important}
+      .cn-team-orb{width:66px;height:66px;flex-basis:66px;flex-shrink:0}
+      .cn-board{grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+      .cn-word{border-radius:5px}
+      .cn-clue-row{grid-template-columns:minmax(0,1fr) 68px;gap:6px}
+      .cn-clue-row input{font-size:16px;padding:10px}
+      .cn-clue-row button{min-width:0}
+      .den-emoji-slots{gap:4px}
+      .den-emoji-library{grid-template-columns:repeat(6,minmax(0,1fr))}
+      .den-emoji-pick{font-size:1.45rem!important;min-height:44px}
+      #audio-controls{top:8px;right:8px;padding:5px 7px;gap:5px}
+      #volume-slider{width:56px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
 </style>
 </head>
 <body class="lobby-mode">
@@ -2288,9 +2382,15 @@
         if(CN.phase!=='guess'||team!==CN.turn||captain)return;
         const word=String(action.word||'');if(!CN.words.includes(word)||CN.revealed[word])return;
         CN.proposals=CN.proposals||{};CN.proposals[word]=CN.proposals[word]||[];
-        if(CN.proposals[word].some(x=>x.id===from))return;
-        CN.proposals[word].push({id:from,name:players[from].name||'Oyuncu',avatar:players[from].avatar||'luffy',team});
-        CN.history.unshift((players[from].name||'Oyuncu')+' ('+(team==='red'?'Kırmızı':'Mavi')+') “'+word+'” kelimesini önerdi.');
+        const existingIndex=CN.proposals[word].findIndex(x=>x.id===from);
+        if(existingIndex>=0){
+          CN.proposals[word].splice(existingIndex,1);
+          if(CN.proposals[word].length===0)delete CN.proposals[word];
+          CN.history.unshift((players[from].name||'Oyuncu')+' “'+word+'” kelimesi için önerisini geri çekti.');
+        } else {
+          CN.proposals[word].push({id:from,name:players[from].name||'Oyuncu',avatar:players[from].avatar||'luffy',team});
+          CN.history.unshift((players[from].name||'Oyuncu')+' ('+(team==='red'?'Kırmızı':'Mavi')+') “'+word+'” kelimesini önerdi.');
+        }
       } else if(action.type==='reveal'){
         if(CN.phase!=='guess'||team!==CN.turn||captain)return;
         const word=String(action.word||'');if(!CN.words.includes(word)||CN.revealed[word])return;
@@ -2318,15 +2418,11 @@
       const orbTeam=team==='red'?'red':'blue';
       const orbLabel=team==='red'?'KIRMIZI':'MAVİ';
       let h=`<div class="cn-top"><div class="cn-top-main"><div class="small">GRAND LINE ARCADE</div><h2 style="font-family:'Pirata One',cursive;color:var(--straw);font-size:2rem">🕵️ Gizli Ajanlar</h2><div class="cn-small">Oda: <b>${auEsc(roomCode)}</b></div><button class="secondary" id="cnLeave" style="width:auto;margin:8px 0 0;padding:8px 12px">← Lobiye Dön</button></div><div class="cn-team-orb ${orbTeam}"><span class="cn-orb-label">SENİN TAKIMIN</span><span>${orbLabel}</span></div></div>`;
-      const turnClass=CN.turn==='red'?'cn-turn-red':'cn-turn-blue';
-      const statusText=CN.phase==='finished'?'OYUN BİTTİ':CN.phase==='clue'?`${teamName(CN.turn).toLocaleUpperCase('tr-TR')} TAKIM KAPTANI İPUCU VERİYOR`:`${teamName(CN.turn).toLocaleUpperCase('tr-TR')} TAKIM TAHMİN YAPIYOR`;
-      h+=`<div class="cn-turn cn-turn-status ${turnClass}"><b>${statusText}</b><div class="cn-agent-counters"><span class="cn-agent-counter red">🔴 Kırmızı <strong>${CN.remaining.red}</strong></span><span class="cn-agent-counter blue">🔵 Mavi <strong>${CN.remaining.blue}</strong></span></div></div>`;
+      h+=`<div class="cn-turn cn-turn-status"><b>${CN.phase==='finished'?'Oyun bitti':CN.phase==='clue'?teamName(CN.turn)+' takımının kaptanı ipucu versin':teamName(CN.turn)+' takımı tahmin ediyor'}</b><div class="cn-small">Ajanlar: 🔴 ${CN.remaining.red} · 🔵 ${CN.remaining.blue}</div></div>`;
       if(CN.clue && CN.phase!=='finished'){h+=`<div class="cn-clue-banner"><div><div class="cn-clue-label">Verilen ipucu</div><div class="cn-clue-value">${auEsc(CN.clue.word)}</div></div><div class="cn-clue-count">${Number(CN.clue.count)||0}</div></div>`;}
-      if(CN.phase==='clue'&&captain&&team===CN.turn){h+='<label for="cnClueWord" class="cn-small" style="display:block;font-size:1rem;font-weight:900;color:var(--straw);margin:8px 0 5px">KAPTANIN İPUCU</label><div class="cn-clue-row"><input id="cnClueWord" maxlength="28" placeholder="Tek kelimelik ipucu"><div class="cn-count-control"><button type="button" id="cnCountDown" aria-label="Tahmin hakkını azalt">−</button><input id="cnClueCount" type="number" min="0" max="9" step="1" value="2" aria-label="Tahmin hakkı"><button type="button" id="cnCountUp" aria-label="Tahmin hakkını artır">+</button></div><button id="cnClueSubmit">İPUCU VER</button></div><div class="cn-small">İpucu, tahtadaki kelimelerden biriyle aynı olamaz. Kaptan bu tur tahmin yapmaz.</div>';}
+      if(CN.phase==='clue'&&captain&&team===CN.turn){h+='<div class="cn-clue-row"><input id="cnClueWord" maxlength="28" placeholder="Tek kelimelik ipucu"><input id="cnClueCount" type="number" min="0" max="9" value="2" style="max-width:85px;flex:0 0 85px"><button id="cnClueSubmit">İpucu ver</button></div><div class="cn-small">İpucu, tahtadaki kelimelerden biriyle aynı olamaz. Kaptan bu tur tahmin yapmaz.</div>';}
       else if(CN.phase==='guess'&&team===CN.turn&&!captain){h+='<div class="cn-small">Takımınla konuş, ardından bir kelime kartı seç. En fazla '+CN.guessesLeft+' tahmin hakkın var.</div><button id="cnEndTurn" class="secondary" style="width:auto;margin:8px 0;padding:9px 12px">Turu bitir</button>';}
       else if(CN.phase==='guess'&&team===CN.turn&&captain){h+='<div class="cn-small">Takımın tahmin ediyor. Kaptan olarak kelime kartı seçemezsin.</div>';}
-      const statusPeople=Object.entries(players).map(([id,p])=>{const t=p.team||CN.teams?.[id]||'';if(!t)return '';const label=CN.phase==='clue'?(CN.turn===t&&p.captain?'İpucu veriyor':CN.turn===t?'Kaptan ipucunu bekliyor':'Rakip takımın sırası'):CN.phase==='guess'?(CN.turn===t?(p.captain?'Takımı izliyor':'Tahmin yapıyor'):'Bekliyor'): 'Oyun bitti';return `<span class="cn-player-status ${t}"><img src="${avatarSrc(p.avatar)}" alt=""><span>${auEsc(p.name)} · ${label}</span></span>`;}).join('');
-      if(statusPeople)h+=`<div class="cn-player-statuses">${statusPeople}</div>`;
       h+='<div class="cn-game-layout"><div class="cn-board">'+CN.words.map(w=>{const revealedRole=CN.revealed[w];const role=revealedRole||(captain&&cnPrivateKey?cnPrivateKey[w]:'');const proposals=CN.proposals?.[w]||[];const mineProposed=proposals.some(x=>x.id===myId);const proposalClass=proposals.length?(proposals[0].team==='red'?'cn-proposed-red':'cn-proposed-blue'):'';const canPropose=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&active;const canConfirm=CN.phase==='guess'&&team===CN.turn&&!captain&&!revealedRole&&proposals.length>0&&active;const imageIndex=CN.cardImages?.[w];const image=cnCardImagePath(imageIndex,role);const wordLengthClass=cnWordLengthClass(w);const showFullCard=!!revealedRole||(captain&&!!cnPrivateKey);const face=showFullCard?`<img class="cn-full-card" src="${image||''}" alt=""><span class="cn-card-word ${wordLengthClass}">${auEsc(w)}</span>`:`<span class="cn-card-word cn-hidden-word ${wordLengthClass}" style="display:flex;position:static;height:auto;padding:10px">${auEsc(w)}</span>`;const avatars=proposals.length?`<span class="cn-proposer-stack">${proposals.map(x=>`<img class="cn-proposer-avatar" src="${avatarSrc(x.avatar)}" title="${auEsc(x.name)} önerdi" alt="">`).join('')}</span>`:'';const confirm=canConfirm?`<span class="cn-confirm-reveal" role="button" tabindex="0" data-cn-confirm="${auEsc(w)}" title="Önerilen kartı aç" aria-label="${auEsc(w)} kartını aç">✓</span>`:(captain&&revealedRole?'<span class="cn-revealed-check" title="Kart açıldı">✓</span>':'');return `<button class="cn-word ${role||''} ${captain&&cnPrivateKey&&!revealedRole?'cn-secret-card':''} ${proposalClass}" data-cn-word="${auEsc(w)}" ${(!(canPropose||canConfirm))?'disabled':''}>${face}${avatars}${confirm}</button>`;}).join('')+'</div><aside class="cn-log-drawer '+(cnLogOpen?'is-open':'')+'" id="cnLogPanel"><button type="button" class="cn-log-toggle" id="cnLogToggle" aria-expanded="'+(cnLogOpen?'true':'false')+'" aria-label="Olay günlüğünü '+(cnLogOpen?'kapat':'aç')+'"><span class="cn-log-arrow">'+(cnLogOpen?'‹':'›')+'</span><span class="cn-log-tab-label">OLAY GÜNLÜĞÜ</span></button><div class="cn-log-drawer-content"><div class="cn-log-title">📜 Olay günlüğü</div><div class="cn-log">'+(CN.history||[]).map(x=>`<div>${auEsc(x)}</div>`).join('')+'</div></div></aside></div>';
       if(CN.phase==='finished')h+=`<h3 style="text-align:center;color:var(--straw);margin:10px">🏆 ${teamName(CN.winner)} takım kazandı!</h3><p class="cn-small" style="text-align:center">Yeni maç için lobiye dönüp yeni oda oluşturun.</p>`;
       view.innerHTML=h;
@@ -2334,11 +2430,6 @@
       const clueWordInput=document.getElementById('cnClueWord'); const clueCountInput=document.getElementById('cnClueCount'); if(clueWordInput){clueWordInput.value=savedClueWord; if(editingClue&&activeEl.id==='cnClueWord'){clueWordInput.focus();clueWordInput.setSelectionRange(savedStart===null?clueWordInput.value.length:savedStart,savedEnd===null?clueWordInput.value.length:savedEnd);}} if(clueCountInput){clueCountInput.value=savedClueCount; if(editingClue&&activeEl.id==='cnClueCount')clueCountInput.focus();}
       document.getElementById('cnEndTurn')?.addEventListener('click',()=>cnAction({type:'end'}));
       document.getElementById('cnClueSubmit')?.addEventListener('click',()=>{const word=document.getElementById('cnClueWord').value.trim();const count=Number(document.getElementById('cnClueCount').value);if(!word||/\s/.test(word)){alert('İpucu tek kelime olmalı.');return;}cnAction({type:'clue',word,count});});
-      const countInput=document.getElementById('cnClueCount');
-      const adjustCount=delta=>{if(!countInput)return;const current=Number(countInput.value)||0;countInput.value=Math.max(Number(countInput.min)||0,Math.min(Number(countInput.max)||9,current+delta));};
-      document.getElementById('cnCountDown')?.addEventListener('click',()=>adjustCount(-1));
-      document.getElementById('cnCountUp')?.addEventListener('click',()=>adjustCount(1));
-      countInput?.addEventListener('change',()=>{const min=Number(countInput.min)||0,max=Number(countInput.max)||9;countInput.value=Math.max(min,Math.min(max,Math.round(Number(countInput.value)||0)));});
       view.querySelectorAll('[data-cn-word]').forEach(btn=>btn.addEventListener('click',ev=>{if(ev.target.closest('[data-cn-confirm]'))return;if(!btn.disabled)cnAction({type:'propose',word:btn.dataset.cnWord});}));
       view.querySelectorAll('[data-cn-confirm]').forEach(el=>{const confirm=()=>cnAction({type:'reveal',word:el.dataset.cnConfirm});el.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();confirm();});el.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();ev.stopPropagation();confirm();}});});
       const logToggle=document.getElementById('cnLogToggle'); if(logToggle)logToggle.onclick=()=>{cnLogOpen=!cnLogOpen;const panel=document.getElementById('cnLogPanel');panel?.classList.toggle('is-open',cnLogOpen);logToggle.setAttribute('aria-expanded',String(cnLogOpen));logToggle.setAttribute('aria-label','Olay günlüğünü '+(cnLogOpen?'kapat':'aç'));const arrow=logToggle.querySelector('.cn-log-arrow');if(arrow)arrow.textContent=cnLogOpen?'›':'‹';};
