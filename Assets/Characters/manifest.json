@@ -1,0 +1,1002 @@
+{
+  "Monkey D. Luffy": {
+    "status": "downloaded",
+    "file": "Luffy.webp",
+    "path": "Assets/Characters/Luffy.webp"
+  },
+  "Roronoa Zoro": {
+    "status": "downloaded",
+    "file": "Roronoa_Zoro.webp",
+    "path": "Assets/Characters/Roronoa_Zoro.webp"
+  },
+  "Nami": {
+    "status": "downloaded",
+    "file": "Nami.webp",
+    "path": "Assets/Characters/Nami.webp"
+  },
+  "Usopp": {
+    "status": "downloaded",
+    "file": "Usopp.webp",
+    "path": "Assets/Characters/Usopp.webp"
+  },
+  "Vinsmoke Sanji": {
+    "status": "downloaded",
+    "file": "Vinsmoke_Sanji.webp",
+    "path": "Assets/Characters/Vinsmoke_Sanji.webp"
+  },
+  "Tony Tony Chopper": {
+    "status": "downloaded",
+    "file": "Tony_Tony_Chopper.webp",
+    "path": "Assets/Characters/Tony_Tony_Chopper.webp"
+  },
+  "Nico Robin": {
+    "status": "downloaded",
+    "file": "Nico_Robin.webp",
+    "path": "Assets/Characters/Nico_Robin.webp"
+  },
+  "Franky": {
+    "status": "downloaded",
+    "file": "Franky.webp",
+    "path": "Assets/Characters/Franky.webp"
+  },
+  "Brook": {
+    "status": "downloaded",
+    "file": "Brook.webp",
+    "path": "Assets/Characters/Brook.webp"
+  },
+  "Jinbe": {
+    "status": "downloaded",
+    "file": "Jinbe.webp",
+    "path": "Assets/Characters/Jinbe.webp"
+  },
+  "Monkey D. Garp": {
+    "status": "downloaded",
+    "file": "Garp.webp",
+    "path": "Assets/Characters/Garp.webp"
+  },
+  "Monkey D. Dragon": {
+    "status": "downloaded",
+    "file": "Dragon.webp",
+    "path": "Assets/Characters/Dragon.webp"
+  },
+  "Portgas D. Ace": {
+    "status": "downloaded",
+    "file": "Portgas_D.webp",
+    "path": "Assets/Characters/Portgas_D.webp"
+  },
+  "Sabo": {
+    "status": "downloaded",
+    "file": "Sabo.webp",
+    "path": "Assets/Characters/Sabo.webp"
+  },
+  "Gol D. Roger": {
+    "status": "downloaded",
+    "file": "Gol_D.webp",
+    "path": "Assets/Characters/Gol_D.webp"
+  },
+  "Silvers Rayleigh": {
+    "status": "downloaded",
+    "file": "Silvers_Rayleigh.webp",
+    "path": "Assets/Characters/Silvers_Rayleigh.webp"
+  },
+  "Shanks": {
+    "status": "downloaded",
+    "file": "Shanks.webp",
+    "path": "Assets/Characters/Shanks.webp"
+  },
+  "Benn Beckman": {
+    "status": "downloaded",
+    "file": "Benn_Beckman.webp",
+    "path": "Assets/Characters/Benn_Beckman.webp"
+  },
+  "Yasopp": {
+    "status": "downloaded",
+    "file": "Yasopp.webp",
+    "path": "Assets/Characters/Yasopp.webp"
+  },
+  "Lucky Roux": {
+    "status": "downloaded",
+    "file": "Lucky_Roux.webp",
+    "path": "Assets/Characters/Lucky_Roux.webp"
+  },
+  "Makino": {
+    "status": "downloaded",
+    "file": "Makino.webp",
+    "path": "Assets/Characters/Makino.webp"
+  },
+  "Dadan": {
+    "status": "downloaded",
+    "file": "Dadan.webp",
+    "path": "Assets/Characters/Dadan.webp"
+  },
+  "Koby": {
+    "status": "downloaded",
+    "file": "Koby.webp",
+    "path": "Assets/Characters/Koby.webp"
+  },
+  "Helmeppo": {
+    "status": "downloaded",
+    "file": "Helmeppo.webp",
+    "path": "Assets/Characters/Helmeppo.webp"
+  },
+  "Buggy": {
+    "status": "downloaded",
+    "file": "Buggy.webp",
+    "path": "Assets/Characters/Buggy.webp"
+  },
+  "Dracule Mihawk": {
+    "status": "downloaded",
+    "file": "Dracule_Mihawk.webp",
+    "path": "Assets/Characters/Dracule_Mihawk.webp"
+  },
+  "Edward Newgate": {
+    "status": "downloaded",
+    "file": "Edward_Newgate.webp",
+    "path": "Assets/Characters/Edward_Newgate.webp"
+  },
+  "Kaido": {
+    "status": "downloaded",
+    "file": "Kaido.webp",
+    "path": "Assets/Characters/Kaido.webp"
+  },
+  "Charlotte Linlin": {
+    "status": "downloaded",
+    "file": "Charlotte_Linlin.webp",
+    "path": "Assets/Characters/Charlotte_Linlin.webp"
+  },
+  "Marshall D. Teach": {
+    "status": "downloaded",
+    "file": "Marshall_D.webp",
+    "path": "Assets/Characters/Marshall_D.webp"
+  },
+  "Marco": {
+    "status": "downloaded",
+    "file": "Marco.webp",
+    "path": "Assets/Characters/Marco.webp"
+  },
+  "Jozu": {
+    "status": "downloaded",
+    "file": "Jozu.webp",
+    "path": "Assets/Characters/Jozu.webp"
+  },
+  "Vista": {
+    "status": "downloaded",
+    "file": "Vista.webp",
+    "path": "Assets/Characters/Vista.webp"
+  },
+  "Izo": {
+    "status": "downloaded",
+    "file": "Izo.webp",
+    "path": "Assets/Characters/Izo.webp"
+  },
+  "Thatch": {
+    "status": "downloaded",
+    "file": "Thatch.webp",
+    "path": "Assets/Characters/Thatch.webp"
+  },
+  "Squard": {
+    "status": "downloaded",
+    "file": "Squard.webp",
+    "path": "Assets/Characters/Squard.webp"
+  },
+  "Jesus Burgess": {
+    "status": "downloaded",
+    "file": "Jesus_Burgess.webp",
+    "path": "Assets/Characters/Jesus_Burgess.webp"
+  },
+  "Shiryu": {
+    "status": "downloaded",
+    "file": "Shiryu.webp",
+    "path": "Assets/Characters/Shiryu.webp"
+  },
+  "Van Augur": {
+    "status": "downloaded",
+    "file": "Van_Augur.webp",
+    "path": "Assets/Characters/Van_Augur.webp"
+  },
+  "Laffitte": {
+    "status": "downloaded",
+    "file": "Laffitte.webp",
+    "path": "Assets/Characters/Laffitte.webp"
+  },
+  "Catarina Devon": {
+    "status": "downloaded",
+    "file": "Catarina_Devon.webp",
+    "path": "Assets/Characters/Catarina_Devon.webp"
+  },
+  "Avalo Pizarro": {
+    "status": "downloaded",
+    "file": "Avalo_Pizarro.webp",
+    "path": "Assets/Characters/Avalo_Pizarro.webp"
+  },
+  "Vasco Shot": {
+    "status": "downloaded",
+    "file": "Vasco_Shot.webp",
+    "path": "Assets/Characters/Vasco_Shot.webp"
+  },
+  "Sanjuan Wolf": {
+    "status": "downloaded",
+    "file": "Sanjuan_Wolf.webp",
+    "path": "Assets/Characters/Sanjuan_Wolf.webp"
+  },
+  "Doc Q": {
+    "status": "downloaded",
+    "file": "Doc_Q.webp",
+    "path": "Assets/Characters/Doc_Q.webp"
+  },
+  "Charlotte Katakuri": {
+    "status": "downloaded",
+    "file": "Charlotte_Katakuri.webp",
+    "path": "Assets/Characters/Charlotte_Katakuri.webp"
+  },
+  "Charlotte Smoothie": {
+    "status": "downloaded",
+    "file": "Charlotte_Smoothie.webp",
+    "path": "Assets/Characters/Charlotte_Smoothie.webp"
+  },
+  "Charlotte Cracker": {
+    "status": "downloaded",
+    "file": "Charlotte_Cracker.webp",
+    "path": "Assets/Characters/Charlotte_Cracker.webp"
+  },
+  "Charlotte Perospero": {
+    "status": "downloaded",
+    "file": "Charlotte_Perospero.webp",
+    "path": "Assets/Characters/Charlotte_Perospero.webp"
+  },
+  "Charlotte Pudding": {
+    "status": "downloaded",
+    "file": "Charlotte_Pudding.webp",
+    "path": "Assets/Characters/Charlotte_Pudding.webp"
+  },
+  "Charlotte Brûlée": {
+    "status": "downloaded",
+    "file": "Charlotte_Brûlée.webp",
+    "path": "Assets/Characters/Charlotte_Brûlée.webp"
+  },
+  "Charlotte Daifuku": {
+    "status": "downloaded",
+    "file": "Charlotte_Daifuku.webp",
+    "path": "Assets/Characters/Charlotte_Daifuku.webp"
+  },
+  "King": {
+    "status": "downloaded",
+    "file": "King.webp",
+    "path": "Assets/Characters/King.webp"
+  },
+  "Queen": {
+    "status": "downloaded",
+    "file": "Queen.webp",
+    "path": "Assets/Characters/Queen.webp"
+  },
+  "Jack": {
+    "status": "downloaded",
+    "file": "Jack.webp",
+    "path": "Assets/Characters/Jack.webp"
+  },
+  "Page One": {
+    "status": "downloaded",
+    "file": "Page_One.webp",
+    "path": "Assets/Characters/Page_One.webp"
+  },
+  "Ulti": {
+    "status": "downloaded",
+    "file": "Ulti.webp",
+    "path": "Assets/Characters/Ulti.webp"
+  },
+  "Black Maria": {
+    "status": "downloaded",
+    "file": "Black_Maria.webp",
+    "path": "Assets/Characters/Black_Maria.webp"
+  },
+  "Yamato": {
+    "status": "downloaded",
+    "file": "Yamato.webp",
+    "path": "Assets/Characters/Yamato.webp"
+  },
+  "Eustass Kid": {
+    "status": "downloaded",
+    "file": "Eustass_Kid.webp",
+    "path": "Assets/Characters/Eustass_Kid.webp"
+  },
+  "Killer": {
+    "status": "downloaded",
+    "file": "Killer.webp",
+    "path": "Assets/Characters/Killer.webp"
+  },
+  "Trafalgar D. Water Law": {
+    "status": "downloaded",
+    "file": "Trafalgar_D.webp",
+    "path": "Assets/Characters/Trafalgar_D.webp"
+  },
+  "Bepo": {
+    "status": "downloaded",
+    "file": "Bepo.webp",
+    "path": "Assets/Characters/Bepo.webp"
+  },
+  "Penguin": {
+    "status": "downloaded",
+    "file": "Penguin.webp",
+    "path": "Assets/Characters/Penguin.webp"
+  },
+  "Shachi": {
+    "status": "downloaded",
+    "file": "Shachi.webp",
+    "path": "Assets/Characters/Shachi.webp"
+  },
+  "X Drake": {
+    "status": "downloaded",
+    "file": "X_Drake.webp",
+    "path": "Assets/Characters/X_Drake.webp"
+  },
+  "Basil Hawkins": {
+    "status": "downloaded",
+    "file": "Basil_Hawkins.webp",
+    "path": "Assets/Characters/Basil_Hawkins.webp"
+  },
+  "Scratchmen Apoo": {
+    "status": "downloaded",
+    "file": "Scratchmen_Apoo.webp",
+    "path": "Assets/Characters/Scratchmen_Apoo.webp"
+  },
+  "Jewelry Bonney": {
+    "status": "downloaded",
+    "file": "Jewelry_Bonney.webp",
+    "path": "Assets/Characters/Jewelry_Bonney.webp"
+  },
+  "Urouge": {
+    "status": "downloaded",
+    "file": "Urouge.webp",
+    "path": "Assets/Characters/Urouge.webp"
+  },
+  "Capone Bege": {
+    "status": "downloaded",
+    "file": "Capone_Bege.webp",
+    "path": "Assets/Characters/Capone_Bege.webp"
+  },
+  "Bartolomeo": {
+    "status": "downloaded",
+    "file": "Bartolomeo.webp",
+    "path": "Assets/Characters/Bartolomeo.webp"
+  },
+  "Cavendish": {
+    "status": "downloaded",
+    "file": "Cavendish.webp",
+    "path": "Assets/Characters/Cavendish.webp"
+  },
+  "Sakazuki": {
+    "status": "downloaded",
+    "file": "Sakazuki.webp",
+    "path": "Assets/Characters/Sakazuki.webp"
+  },
+  "Kuzan": {
+    "status": "downloaded",
+    "file": "Kuzan.webp",
+    "path": "Assets/Characters/Kuzan.webp"
+  },
+  "Borsalino": {
+    "status": "downloaded",
+    "file": "Borsalino.webp",
+    "path": "Assets/Characters/Borsalino.webp"
+  },
+  "Issho": {
+    "status": "downloaded",
+    "file": "Issho.webp",
+    "path": "Assets/Characters/Issho.webp"
+  },
+  "Ryokugyu": {
+    "status": "downloaded",
+    "file": "Ryokugyu.webp",
+    "path": "Assets/Characters/Ryokugyu.webp"
+  },
+  "Sengoku": {
+    "status": "downloaded",
+    "file": "Sengoku.webp",
+    "path": "Assets/Characters/Sengoku.webp"
+  },
+  "Tsuru": {
+    "status": "downloaded",
+    "file": "Tsuru.webp",
+    "path": "Assets/Characters/Tsuru.webp"
+  },
+  "Smoker": {
+    "status": "downloaded",
+    "file": "Smoker.webp",
+    "path": "Assets/Characters/Smoker.webp"
+  },
+  "Tashigi": {
+    "status": "downloaded",
+    "file": "Tashigi.webp",
+    "path": "Assets/Characters/Tashigi.webp"
+  },
+  "Hina": {
+    "status": "downloaded",
+    "file": "Hina.webp",
+    "path": "Assets/Characters/Hina.webp"
+  },
+  "Momonga": {
+    "status": "downloaded",
+    "file": "Momonga.webp",
+    "path": "Assets/Characters/Momonga.webp"
+  },
+  "Vergo": {
+    "status": "downloaded",
+    "file": "Vergo.webp",
+    "path": "Assets/Characters/Vergo.webp"
+  },
+  "Sentomaru": {
+    "status": "downloaded",
+    "file": "Sentomaru.webp",
+    "path": "Assets/Characters/Sentomaru.webp"
+  },
+  "Bastille": {
+    "status": "downloaded",
+    "file": "Bastille.webp",
+    "path": "Assets/Characters/Bastille.webp"
+  },
+  "Zephyr": {
+    "status": "downloaded",
+    "file": "Zephyr.webp",
+    "path": "Assets/Characters/Zephyr.webp"
+  },
+  "Crocodile": {
+    "status": "downloaded",
+    "file": "Crocodile.webp",
+    "path": "Assets/Characters/Crocodile.webp"
+  },
+  "Gecko Moria": {
+    "status": "downloaded",
+    "file": "Gecko_Moria.webp",
+    "path": "Assets/Characters/Gecko_Moria.webp"
+  },
+  "Donquixote Doflamingo": {
+    "status": "downloaded",
+    "file": "Donquixote_Doflamingo.webp",
+    "path": "Assets/Characters/Donquixote_Doflamingo.webp"
+  },
+  "Boa Hancock": {
+    "status": "downloaded",
+    "file": "Boa_Hancock.webp",
+    "path": "Assets/Characters/Boa_Hancock.webp"
+  },
+  "Boa Marigold": {
+    "status": "downloaded",
+    "file": "Boa_Marigold.webp",
+    "path": "Assets/Characters/Boa_Marigold.webp"
+  },
+  "Boa Sandersonia": {
+    "status": "downloaded",
+    "file": "Boa_Sandersonia.webp",
+    "path": "Assets/Characters/Boa_Sandersonia.webp"
+  },
+  "Bartholomew Kuma": {
+    "status": "downloaded",
+    "file": "Bartholomew_Kuma.webp",
+    "path": "Assets/Characters/Bartholomew_Kuma.webp"
+  },
+  "Emporio Ivankov": {
+    "status": "downloaded",
+    "file": "Emporio_Ivankov.webp",
+    "path": "Assets/Characters/Emporio_Ivankov.webp"
+  },
+  "Bon Clay": {
+    "status": "downloaded",
+    "file": "Bon_Clay.webp",
+    "path": "Assets/Characters/Bon_Clay.webp"
+  },
+  "Daz Bones": {
+    "status": "downloaded",
+    "file": "Daz_Bones.webp",
+    "path": "Assets/Characters/Daz_Bones.webp"
+  },
+  "Magellan": {
+    "status": "downloaded",
+    "file": "Magellan.webp",
+    "path": "Assets/Characters/Magellan.webp"
+  },
+  "Hannyabal": {
+    "status": "downloaded",
+    "file": "Hannyabal.webp",
+    "path": "Assets/Characters/Hannyabal.webp"
+  },
+  "Sadi": {
+    "status": "downloaded",
+    "file": "Sadi.webp",
+    "path": "Assets/Characters/Sadi.webp"
+  },
+  "Galdino": {
+    "status": "downloaded",
+    "file": "Galdino.webp",
+    "path": "Assets/Characters/Galdino.webp"
+  },
+  "Miss Doublefinger": {
+    "status": "downloaded",
+    "file": "Miss_Doublefinger.webp",
+    "path": "Assets/Characters/Miss_Doublefinger.webp"
+  },
+  "Rob Lucci": {
+    "status": "downloaded",
+    "file": "Rob_Lucci.webp",
+    "path": "Assets/Characters/Rob_Lucci.webp"
+  },
+  "Kaku": {
+    "status": "downloaded",
+    "file": "Kaku.webp",
+    "path": "Assets/Characters/Kaku.webp"
+  },
+  "Kalifa": {
+    "status": "downloaded",
+    "file": "Kalifa.webp",
+    "path": "Assets/Characters/Kalifa.webp"
+  },
+  "Blueno": {
+    "status": "downloaded",
+    "file": "Blueno.webp",
+    "path": "Assets/Characters/Blueno.webp"
+  },
+  "Jabra": {
+    "status": "downloaded",
+    "file": "Jabra.webp",
+    "path": "Assets/Characters/Jabra.webp"
+  },
+  "Fukurou": {
+    "status": "downloaded",
+    "file": "Fukurou.webp",
+    "path": "Assets/Characters/Fukurou.webp"
+  },
+  "Kumadori": {
+    "status": "downloaded",
+    "file": "Kumadori.webp",
+    "path": "Assets/Characters/Kumadori.webp"
+  },
+  "Spandam": {
+    "status": "downloaded",
+    "file": "Spandam.webp",
+    "path": "Assets/Characters/Spandam.webp"
+  },
+  "Saint Jaygarcia Saturn": {
+    "status": "downloaded",
+    "file": "Saint_Jaygarcia_Saturn.webp",
+    "path": "Assets/Characters/Saint_Jaygarcia_Saturn.webp"
+  },
+  "Marcus Mars": {
+    "status": "downloaded",
+    "file": "Marcus_Mars.webp",
+    "path": "Assets/Characters/Marcus_Mars.webp"
+  },
+  "Topman Warcury": {
+    "status": "downloaded",
+    "file": "Topman_Warcury.webp",
+    "path": "Assets/Characters/Topman_Warcury.webp"
+  },
+  "Ethanbaron V. Nusjuro": {
+    "status": "downloaded",
+    "file": "Ethanbaron_V.webp",
+    "path": "Assets/Characters/Ethanbaron_V.webp"
+  },
+  "Shepherd Ju Peter": {
+    "status": "downloaded",
+    "file": "Shepherd_Ju_Peter.webp",
+    "path": "Assets/Characters/Shepherd_Ju_Peter.webp"
+  },
+  "Imu": {
+    "status": "downloaded",
+    "file": "Imu.webp",
+    "path": "Assets/Characters/Imu.webp"
+  },
+  "Figarland Garling": {
+    "status": "downloaded",
+    "file": "Figarland_Garling.webp",
+    "path": "Assets/Characters/Figarland_Garling.webp"
+  },
+  "Rocks D. Xebec": {
+    "status": "downloaded",
+    "file": "Rocks_D.webp",
+    "path": "Assets/Characters/Rocks_D.webp"
+  },
+  "Alvida": {
+    "status": "downloaded",
+    "file": "Alvida.webp",
+    "path": "Assets/Characters/Alvida.webp"
+  },
+  "Axe-Hand Morgan": {
+    "status": "downloaded",
+    "file": "Axe-Hand_Morgan.webp",
+    "path": "Assets/Characters/Axe-Hand_Morgan.webp"
+  },
+  "Kuro": {
+    "status": "downloaded",
+    "file": "Kuro.webp",
+    "path": "Assets/Characters/Kuro.webp"
+  },
+  "Don Krieg": {
+    "status": "downloaded",
+    "file": "Don_Krieg.webp",
+    "path": "Assets/Characters/Don_Krieg.webp"
+  },
+  "Gin": {
+    "status": "downloaded",
+    "file": "Gin.webp",
+    "path": "Assets/Characters/Gin.webp"
+  },
+  "Arlong": {
+    "status": "downloaded",
+    "file": "Arlong.webp",
+    "path": "Assets/Characters/Arlong.webp"
+  },
+  "Kuroobi": {
+    "status": "downloaded",
+    "file": "Kuroobi.webp",
+    "path": "Assets/Characters/Kuroobi.webp"
+  },
+  "Hatchan": {
+    "status": "downloaded",
+    "file": "Hatchan.webp",
+    "path": "Assets/Characters/Hatchan.webp"
+  },
+  "Bellemere": {
+    "status": "downloaded",
+    "file": "Bellemere.webp",
+    "path": "Assets/Characters/Bellemere.webp"
+  },
+  "Nojiko": {
+    "status": "downloaded",
+    "file": "Nojiko.webp",
+    "path": "Assets/Characters/Nojiko.webp"
+  },
+  "Genzo": {
+    "status": "downloaded",
+    "file": "Genzo.webp",
+    "path": "Assets/Characters/Genzo.webp"
+  },
+  "Zeff": {
+    "status": "downloaded",
+    "file": "Zeff.webp",
+    "path": "Assets/Characters/Zeff.webp"
+  },
+  "Kaya": {
+    "status": "downloaded",
+    "file": "Kaya.webp",
+    "path": "Assets/Characters/Kaya.webp"
+  },
+  "Kuina": {
+    "status": "downloaded",
+    "file": "Kuina.webp",
+    "path": "Assets/Characters/Kuina.webp"
+  },
+  "Nefertari Vivi": {
+    "status": "downloaded",
+    "file": "Nefertari_Vivi.webp",
+    "path": "Assets/Characters/Nefertari_Vivi.webp"
+  },
+  "Nefertari Cobra": {
+    "status": "downloaded",
+    "file": "Nefertari_Cobra.webp",
+    "path": "Assets/Characters/Nefertari_Cobra.webp"
+  },
+  "Pell": {
+    "status": "downloaded",
+    "file": "Pell.webp",
+    "path": "Assets/Characters/Pell.webp"
+  },
+  "Chaka": {
+    "status": "downloaded",
+    "file": "Chaka.webp",
+    "path": "Assets/Characters/Chaka.webp"
+  },
+  "Karoo": {
+    "status": "downloaded",
+    "file": "Karoo.webp",
+    "path": "Assets/Characters/Karoo.webp"
+  },
+  "Enel": {
+    "status": "downloaded",
+    "file": "Enel.webp",
+    "path": "Assets/Characters/Enel.webp"
+  },
+  "Wyper": {
+    "status": "downloaded",
+    "file": "Wyper.webp",
+    "path": "Assets/Characters/Wyper.webp"
+  },
+  "Gan Fall": {
+    "status": "downloaded",
+    "file": "Gan_Fall.webp",
+    "path": "Assets/Characters/Gan_Fall.webp"
+  },
+  "Conis": {
+    "status": "downloaded",
+    "file": "Conis.webp",
+    "path": "Assets/Characters/Conis.webp"
+  },
+  "Iceburg": {
+    "status": "downloaded",
+    "file": "Iceburg.webp",
+    "path": "Assets/Characters/Iceburg.webp"
+  },
+  "Kokoro": {
+    "status": "downloaded",
+    "file": "Kokoro.webp",
+    "path": "Assets/Characters/Kokoro.webp"
+  },
+  "Paulie": {
+    "status": "downloaded",
+    "file": "Paulie.webp",
+    "path": "Assets/Characters/Paulie.webp"
+  },
+  "Tom": {
+    "status": "downloaded",
+    "file": "Tom.webp",
+    "path": "Assets/Characters/Tom.webp"
+  },
+  "Absalom": {
+    "status": "downloaded",
+    "file": "Absalom.webp",
+    "path": "Assets/Characters/Absalom.webp"
+  },
+  "Perona": {
+    "status": "downloaded",
+    "file": "Perona.webp",
+    "path": "Assets/Characters/Perona.webp"
+  },
+  "Dr. Hogback": {
+    "status": "downloaded",
+    "file": "Dr_Hogback.webp",
+    "path": "Assets/Characters/Dr_Hogback.webp"
+  },
+  "Ryuma": {
+    "status": "downloaded",
+    "file": "Ryuma.webp",
+    "path": "Assets/Characters/Ryuma.webp"
+  },
+  "Laboon": {
+    "status": "downloaded",
+    "file": "Laboon.webp",
+    "path": "Assets/Characters/Laboon.webp"
+  },
+  "Crocus": {
+    "status": "downloaded",
+    "file": "Crocus.webp",
+    "path": "Assets/Characters/Crocus.webp"
+  },
+  "Neptune": {
+    "status": "downloaded",
+    "file": "Neptune.webp",
+    "path": "Assets/Characters/Neptune.webp"
+  },
+  "Shirahoshi": {
+    "status": "downloaded",
+    "file": "Shirahoshi.webp",
+    "path": "Assets/Characters/Shirahoshi.webp"
+  },
+  "Hody Jones": {
+    "status": "downloaded",
+    "file": "Hody_Jones.webp",
+    "path": "Assets/Characters/Hody_Jones.webp"
+  },
+  "Fukaboshi": {
+    "status": "downloaded",
+    "file": "Fukaboshi.webp",
+    "path": "Assets/Characters/Fukaboshi.webp"
+  },
+  "Fisher Tiger": {
+    "status": "downloaded",
+    "file": "Fisher_Tiger.webp",
+    "path": "Assets/Characters/Fisher_Tiger.webp"
+  },
+  "Vander Decken IX": {
+    "status": "downloaded",
+    "file": "Vander_Decken_IX.webp",
+    "path": "Assets/Characters/Vander_Decken_IX.webp"
+  },
+  "Otohime": {
+    "status": "downloaded",
+    "file": "Otohime.webp",
+    "path": "Assets/Characters/Otohime.webp"
+  },
+  "Rebecca": {
+    "status": "downloaded",
+    "file": "Rebecca.webp",
+    "path": "Assets/Characters/Rebecca.webp"
+  },
+  "Kyros": {
+    "status": "downloaded",
+    "file": "Kyros.webp",
+    "path": "Assets/Characters/Kyros.webp"
+  },
+  "Viola": {
+    "status": "downloaded",
+    "file": "Viola.webp",
+    "path": "Assets/Characters/Viola.webp"
+  },
+  "Leo": {
+    "status": "downloaded",
+    "file": "Leo.webp",
+    "path": "Assets/Characters/Leo.webp"
+  },
+  "Diamante": {
+    "status": "downloaded",
+    "file": "Diamante.webp",
+    "path": "Assets/Characters/Diamante.webp"
+  },
+  "Trebol": {
+    "status": "downloaded",
+    "file": "Trebol.webp",
+    "path": "Assets/Characters/Trebol.webp"
+  },
+  "Pica": {
+    "status": "downloaded",
+    "file": "Pica.webp",
+    "path": "Assets/Characters/Pica.webp"
+  },
+  "Baby 5": {
+    "status": "downloaded",
+    "file": "Baby_5.webp",
+    "path": "Assets/Characters/Baby_5.webp"
+  },
+  "Buffalo": {
+    "status": "downloaded",
+    "file": "Buffalo.webp",
+    "path": "Assets/Characters/Buffalo.webp"
+  },
+  "Dellinger": {
+    "status": "downloaded",
+    "file": "Dellinger.webp",
+    "path": "Assets/Characters/Dellinger.webp"
+  },
+  "Sugar": {
+    "status": "downloaded",
+    "file": "Sugar.webp",
+    "path": "Assets/Characters/Sugar.webp"
+  },
+  "Señor Pink": {
+    "status": "downloaded",
+    "file": "Señor_Pink.webp",
+    "path": "Assets/Characters/Señor_Pink.webp"
+  },
+  "Bellamy": {
+    "status": "downloaded",
+    "file": "Bellamy.webp",
+    "path": "Assets/Characters/Bellamy.webp"
+  },
+  "Donquixote Rosinante": {
+    "status": "downloaded",
+    "file": "Donquixote_Rosinante.webp",
+    "path": "Assets/Characters/Donquixote_Rosinante.webp"
+  },
+  "Carrot": {
+    "status": "downloaded",
+    "file": "Carrot.webp",
+    "path": "Assets/Characters/Carrot.webp"
+  },
+  "Pedro": {
+    "status": "downloaded",
+    "file": "Pedro.webp",
+    "path": "Assets/Characters/Pedro.webp"
+  },
+  "Pekoms": {
+    "status": "downloaded",
+    "file": "Pekoms.webp",
+    "path": "Assets/Characters/Pekoms.webp"
+  },
+  "Nekomamushi": {
+    "status": "downloaded",
+    "file": "Nekomamushi.webp",
+    "path": "Assets/Characters/Nekomamushi.webp"
+  },
+  "Inuarashi": {
+    "status": "downloaded",
+    "file": "Inuarashi.webp",
+    "path": "Assets/Characters/Inuarashi.webp"
+  },
+  "Wanda": {
+    "status": "downloaded",
+    "file": "Wanda.webp",
+    "path": "Assets/Characters/Wanda.webp"
+  },
+  "Vinsmoke Judge": {
+    "status": "downloaded",
+    "file": "Vinsmoke_Judge.webp",
+    "path": "Assets/Characters/Vinsmoke_Judge.webp"
+  },
+  "Vinsmoke Reiju": {
+    "status": "downloaded",
+    "file": "Vinsmoke_Reiju.webp",
+    "path": "Assets/Characters/Vinsmoke_Reiju.webp"
+  },
+  "Vinsmoke Ichiji": {
+    "status": "downloaded",
+    "file": "Vinsmoke_Ichiji.webp",
+    "path": "Assets/Characters/Vinsmoke_Ichiji.webp"
+  },
+  "Vinsmoke Niji": {
+    "status": "downloaded",
+    "file": "Vinsmoke_Niji.webp",
+    "path": "Assets/Characters/Vinsmoke_Niji.webp"
+  },
+  "Vinsmoke Yonji": {
+    "status": "downloaded",
+    "file": "Vinsmoke_Yonji.webp",
+    "path": "Assets/Characters/Vinsmoke_Yonji.webp"
+  },
+  "Kozuki Oden": {
+    "status": "downloaded",
+    "file": "Kozuki_Oden.webp",
+    "path": "Assets/Characters/Kozuki_Oden.webp"
+  },
+  "Kozuki Momonosuke": {
+    "status": "downloaded",
+    "file": "Kozuki_Momonosuke.webp",
+    "path": "Assets/Characters/Kozuki_Momonosuke.webp"
+  },
+  "Kin'emon": {
+    "status": "downloaded",
+    "file": "Kin'emon.webp",
+    "path": "Assets/Characters/Kin'emon.webp"
+  },
+  "Kikunojo": {
+    "status": "downloaded",
+    "file": "Kikunojo.webp",
+    "path": "Assets/Characters/Kikunojo.webp"
+  },
+  "Raizo": {
+    "status": "downloaded",
+    "file": "Raizo.webp",
+    "path": "Assets/Characters/Raizo.webp"
+  },
+  "Kawamatsu": {
+    "status": "downloaded",
+    "file": "Kawamatsu.webp",
+    "path": "Assets/Characters/Kawamatsu.webp"
+  },
+  "Denjiro": {
+    "status": "downloaded",
+    "file": "Denjiro.webp",
+    "path": "Assets/Characters/Denjiro.webp"
+  },
+  "Kurozumi Orochi": {
+    "status": "downloaded",
+    "file": "Kurozumi_Orochi.webp",
+    "path": "Assets/Characters/Kurozumi_Orochi.webp"
+  },
+  "Tama": {
+    "status": "downloaded",
+    "file": "Tama.webp",
+    "path": "Assets/Characters/Tama.webp"
+  },
+  "Hyogoro": {
+    "status": "downloaded",
+    "file": "Hyogoro.webp",
+    "path": "Assets/Characters/Hyogoro.webp"
+  },
+  "Shinobu": {
+    "status": "downloaded",
+    "file": "Shinobu.webp",
+    "path": "Assets/Characters/Shinobu.webp"
+  },
+  "Loki": {
+    "status": "downloaded",
+    "file": "Loki.webp",
+    "path": "Assets/Characters/Loki.webp"
+  },
+  "Kozuki Hiyori": {
+    "status": "downloaded",
+    "file": "Kozuki_Hiyori.webp",
+    "path": "Assets/Characters/Kozuki_Hiyori.webp"
+  },
+  "Vegapunk": {
+    "status": "downloaded",
+    "file": "Vegapunk.webp",
+    "path": "Assets/Characters/Vegapunk.webp"
+  },
+  "Dorry": {
+    "status": "downloaded",
+    "file": "Dorry.webp",
+    "path": "Assets/Characters/Dorry.webp"
+  },
+  "Brogy": {
+    "status": "downloaded",
+    "file": "Brogy.webp",
+    "path": "Assets/Characters/Brogy.webp"
+  }
+}
