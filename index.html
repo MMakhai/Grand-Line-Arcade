@@ -643,6 +643,8 @@
     .crew-builder-view-head h2{font-family:'Pirata One',cursive;color:var(--straw);font-size:1.35rem;margin:0}
     .crew-builder-view-head button{width:auto;margin:0;padding:8px 14px}
     .crew-builder-frame-wrap{position:absolute;inset:0;width:100%;height:100dvh;min-height:0;overflow:hidden;background:#070b12}
+    .crew-builder-overlay-back{position:absolute;top:14px;right:16px;z-index:2147483647!important;width:auto!important;margin:0!important;padding:9px 16px!important;border:1px solid #e9b64c!important;border-radius:5px!important;background:linear-gradient(145deg,#24364b,#080e18)!important;color:#fff0ca!important;font:900 15px 'Barlow Condensed',sans-serif!important;letter-spacing:.05em;cursor:pointer;box-shadow:0 3px 12px #0009!important;pointer-events:auto!important}
+    .crew-builder-overlay-back:hover{filter:brightness(1.15);transform:translateY(-1px)}
     .crew-builder-frame{display:block;width:100%;height:100%;min-height:0;border:0;background:#070b12}
     @media(max-width:520px){.crew-builder-view-head{height:48px}.crew-builder-frame-wrap{inset:48px 0 0;height:calc(100dvh - 48px)}}
 
@@ -1380,6 +1382,7 @@
           <button type="button" class="secondary" id="btnCrewBuilderBack">← Geri</button>
         </div>
         <div class="crew-builder-frame-wrap">
+          <button type="button" class="crew-builder-overlay-back" id="btnCrewBuilderBackOverlay">← Geri</button>
           <iframe class="crew-builder-frame" id="crewBuilderFrame" src="crew-builder.html" title="Crew Builder — One Piece karakter mürettebatı kurma oyunu" loading="lazy"></iframe>
         </div>
       </div>
@@ -2448,7 +2451,9 @@
       const amount = Math.floor(Math.max(0, Number(event.data.bounty) || 0) * 0.005);
       if (amount > 0 && event.data.token) recordCareerBounty(amount, 'crew-builder:' + event.data.token, 'Crew Builder ödülünün %0,5’i');
     });
-    document.getElementById('btnCrewBuilderBack').onclick = () => { show('lobby'); showLobbyPage('home'); };
+    const leaveCrewBuilder = () => { show('lobby'); showLobbyPage('home'); };
+    document.getElementById('btnCrewBuilderBack').onclick = leaveCrewBuilder;
+    document.getElementById('btnCrewBuilderBackOverlay').onclick = leaveCrewBuilder;
 
     document.querySelectorAll('[data-den-duration]').forEach(btn => btn.onclick = () => { denDuration = Number(btn.dataset.denDuration) || 30; document.querySelectorAll('[data-den-duration]').forEach(b => b.classList.toggle('active', b === btn)); });
     document.querySelectorAll('[data-den-draw-multiplier]').forEach(btn => btn.onclick = () => { denDrawMultiplier = Number(btn.dataset.denDrawMultiplier) || 1.5; document.querySelectorAll('[data-den-draw-multiplier]').forEach(b => b.classList.toggle('active', b === btn)); });
